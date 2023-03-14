@@ -5,62 +5,85 @@
 #include <vector> 
 #include <sstream> 
 #include <iostream> 
+#include <map>
 
 using namespace std; 
 
-vector<string> parse_string(string str) { 
-    string w; 
-    istringstream iss(str); 
-    vector<string> v; 
-    while (iss >> w) v.push_back(w); 
-    // cout << "array:\n"; 
-    // for (int c = 0; c < v.size(); ++c) cout << v[c] << endl; 
-    return v;
-} 
-
-void Test_parse_string(string str)
+void tokenize(std::string const &str, const char delim,
+            std::vector<std::string> &out)
 {
-    vector<string> v; 
-    //string str;
-    //getline(std::cin,str);
-    v = parse_string(str);
-    for (int c = 0; c < v.size(); ++c) cout << v[c] << endl; 
+    // строим поток из строки
+    std::stringstream ss(str);
+ 
+    std::string s;
+    while (std::getline(ss, s, delim)) {
+        out.push_back(s);
+    }
 }
 
-void Read_str_from_file(sring path)
+bool years_check(std::vector<std::string> str, int year)
 {
+    // int IsAdult = std::stoi(str[4]);
+    // cout << str[4] << endl;
+
+    if (std::stoi(str[4]) == 0 && std::stoi(str[5]) == year){
+        return true;
+    }
+    return false;
+}
+ 
+
+void Read_str_from_file(string path)
+{
+    int year = 1894;
+
     string line;
  
     ifstream in(path); // окрываем файл для чтения
     if (in.is_open())
     {
-        // getline(in, line);
-        // std::cout << line << std::endl;
-        // if (in.is_open())
-        // {
-        //     while (getline(in, line))
-        //     {
-        //         std::cout << line << std::endl;
-        //     }
-        // }
-        for (int i = 0; i < 10; i++)
+        getline(in, line);
+        //std::cout << line << std::endl;
+        if (in.is_open())
         {
-            getline(in, line);
-            cout << line << std::endl;
-        }
-    }
+            int i = 0;
+            while (getline(in, line))
+            {
+                //std::cout << line << std::endl;
+
+                vector<string> parse_string;
+                tokenize(line,'\t',parse_string);
+
+                // for (int c = 0; c < parse_string.size(); ++c) cout << parse_string[c] << endl;
+                // cout << std::endl;
+                
+                if (i == 0){
+                    //fix it
+                    //нужно проверка структуры таблицы
+                    //std::cout << "pass" << std::endl;
+                    ++i;
+                    continue;
+                };
+
+                //cout << years_check(parse_string, year) << endl;
+                if(cout << years_check(parse_string, year))
+                {
+
+                };
+            };
+        };
+    };
     in.close();     // закрываем файл
      
-    std::cout << "End of file" << std::endl;
-}
+    //std::cout << "End of file" << std::endl;
+};
 
 void Test_Read_str_from_file()
 {
-    Read_str_from_file("data/example.tsv");
+    Read_str_from_file("data/example_data.tsv");
 }
 
 int main()
 {
-    //Test_parse_string("DSAFAJHDSKJASGD FDSGF SD       FDSJKGH   SDFJKGHJKSDF ");
     Test_Read_str_from_file();
 }
