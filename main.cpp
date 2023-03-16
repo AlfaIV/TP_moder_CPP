@@ -9,6 +9,55 @@
 
 using namespace std; 
 
+struct _film_
+{
+    string id;
+    string name;
+    int rating;
+    friend std::ostream& operator<< (std::ostream& stream, const _film_& film) {
+        stream << "id: " << film.id << ", name: " << film.name <<  ", rating: " << film.rating  << std::endl;
+        return stream;
+    }
+};
+
+
+map <string, _film_> mp;
+
+void print_mp(map <string, _film_> &mp)
+{
+    map <string, _film_> :: iterator it = mp.begin();
+    for (int i = 0; it != mp.end(); it++, i++) {  // выводим их
+        //cout << it->first << endl;
+        cout << it->second << endl;
+
+    };
+};
+
+int _stoi(std::string str, int* p_value) {
+    // wrapping std::stoi because it may throw an exception
+
+    try {
+        *p_value = std::stoi(str);
+        return 0;
+    }
+
+    catch (const std::invalid_argument& ia) {
+        //std::cerr << "Invalid argument: " << ia.what() << std::endl;
+        return -1;
+    }
+
+    catch (const std::out_of_range& oor) {
+        //std::cerr << "Out of Range error: " << oor.what() << std::endl;
+        return -2;
+    }
+
+    catch (const std::exception& e)
+    {
+        //std::cerr << "Undefined error: " << e.what() << std::endl;
+        return -3;
+    }
+}
+
 void tokenize(std::string const &str, const char delim,
             std::vector<std::string> &out)
 {
@@ -23,12 +72,13 @@ void tokenize(std::string const &str, const char delim,
 
 bool years_check(std::vector<std::string> str, int year)
 {
-    // int IsAdult = std::stoi(str[4]);
-    // cout << str[4] << endl;
-
-    if (std::stoi(str[4]) == 0 && std::stoi(str[5]) == year){
-        return true;
-    }
+    int IsAdult, _Year;
+    if (_stoi(str[4], &IsAdult) == 0 && _stoi(str[5], &_Year) == 0)
+    {
+        if (IsAdult == 0 && _Year == year){
+            return true;
+        };
+    };
     return false;
 }
  
@@ -66,21 +116,24 @@ void Read_str_from_file(string path)
                 };
 
                 //cout << years_check(parse_string, year) << endl;
-                if(cout << years_check(parse_string, year))
+                if(years_check(parse_string, year) == 1)
                 {
-
+                    pair<string, _film_> p = make_pair(parse_string[0],_film_{parse_string[0],parse_string[2],-1});
+                    mp.insert(p);
                 };
             };
         };
     };
     in.close();     // закрываем файл
-     
+    
     //std::cout << "End of file" << std::endl;
 };
 
 void Test_Read_str_from_file()
 {
-    Read_str_from_file("data/example_data.tsv");
+    //Read_str_from_file("data/example_data.tsv");
+    Read_str_from_file("data/title.basics.tsv");
+    print_mp(mp);
 }
 
 int main()
