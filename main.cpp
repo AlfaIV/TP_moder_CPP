@@ -82,10 +82,26 @@ bool years_check(std::vector<std::string> str, int year)
     return false;
 }
  
-
-void Read_str_from_file(string path)
+void Get_data_with_year(vector<string> parse_string, int i)
 {
     int year = 1894;
+    if (i == 0){
+        //fix it
+        //нужно проверка структуры таблицы
+        //std::cout << "pass" << std::endl;
+        return;
+    };
+
+    //cout << years_check(parse_string, year) << endl;
+    if(years_check(parse_string, year) == 1)
+    {
+        pair<string, _film_> p = make_pair(parse_string[0],_film_{parse_string[0],parse_string[2],-1});
+        mp.insert(p);
+    };
+}
+
+void Read_str_from_file(string path, void (*func)(vector<string>, int))
+{
 
     string line;
  
@@ -106,21 +122,14 @@ void Read_str_from_file(string path)
 
                 // for (int c = 0; c < parse_string.size(); ++c) cout << parse_string[c] << endl;
                 // cout << std::endl;
-                
+
                 if (i == 0){
                     //fix it
-                    //нужно проверка структуры таблицы
-                    //std::cout << "pass" << std::endl;
+                    func(parse_string, i);func(parse_string, i);
                     ++i;
-                    continue;
                 };
-
-                //cout << years_check(parse_string, year) << endl;
-                if(years_check(parse_string, year) == 1)
-                {
-                    pair<string, _film_> p = make_pair(parse_string[0],_film_{parse_string[0],parse_string[2],-1});
-                    mp.insert(p);
-                };
+                func(parse_string, i);
+                
             };
         };
     };
@@ -131,8 +140,8 @@ void Read_str_from_file(string path)
 
 void Test_Read_str_from_file()
 {
-    //Read_str_from_file("data/example_data.tsv");
-    Read_str_from_file("data/title.basics.tsv");
+    Read_str_from_file("data/example_data.tsv", &Get_data_with_year);
+    // Read_str_from_file("data/title.basics.tsv");
     print_mp(mp);
 }
 
