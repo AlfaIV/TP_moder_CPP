@@ -100,6 +100,49 @@ void Get_data_with_year(vector<string> parse_string, int i)
     };
 }
 
+// bool id_check(std::vector<std::string> str, map <string, _film_> films)
+// {
+//     if( films.find(str[0]) != films.end())
+//     {
+//         return 1;
+//     }
+//     return 0;
+// }
+
+void Get_rating_to_film(vector<string> parse_string, int i)
+{
+    int rating = 1e3;
+
+    if (i == 0){
+        //fix it
+        //нужно проверка структуры таблицы
+        //std::cout << "pass" << std::endl;
+        return;
+    };
+
+    //cout << years_check(parse_string, year) << endl;
+    map <string, _film_> :: iterator current_film;
+    current_film = mp.find(parse_string[0]);
+
+    if(current_film != mp.end())
+    {
+        int numVotes,rating;
+        if(_stoi(parse_string[2],&numVotes) == 0)
+        {
+            if (numVotes > 1e3 && _stoi(parse_string[1],&rating ) == 0)
+            {
+                current_film->second.rating = rating;
+                // cout << current_film->second.rating << endl;
+                // cout << rating << endl;
+            }else
+            {
+                mp.erase(current_film);  
+            }
+        };
+        // cout << 1 << endl;
+    };
+}
+
 void Read_str_from_file(string path, void (*func)(vector<string>, int))
 {
 
@@ -140,8 +183,9 @@ void Read_str_from_file(string path, void (*func)(vector<string>, int))
 
 void Test_Read_str_from_file()
 {
-    Read_str_from_file("data/example_data.tsv", &Get_data_with_year);
-    // Read_str_from_file("data/title.basics.tsv");
+    //Read_str_from_file("data/example_data.tsv", &Get_data_with_year);
+    Read_str_from_file("data/title.basics.tsv", &Get_data_with_year);
+    Read_str_from_file("data/title.ratings.tsv", &Get_rating_to_film);
     print_mp(mp);
 }
 
