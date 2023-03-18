@@ -14,8 +14,10 @@ struct _film_
     string id;
     string name;
     int rating;
+    string local_name;
     friend std::ostream& operator<< (std::ostream& stream, const _film_& film) {
-        stream << "id: " << film.id << ", name: " << film.name <<  ", rating: " << film.rating  << std::endl;
+        // stream << "id: " << film.id << ", name: " << film.name << ", local_name: " << film.local_name <<  ", rating: " << film.rating  << std::endl;
+        stream << "Название фильма: " << film.local_name <<  ", Рейтинг: " << film.rating  << std::endl;
         return stream;
     }
 };
@@ -100,14 +102,6 @@ void Get_data_with_year(vector<string> parse_string, int i)
     };
 }
 
-// bool id_check(std::vector<std::string> str, map <string, _film_> films)
-// {
-//     if( films.find(str[0]) != films.end())
-//     {
-//         return 1;
-//     }
-//     return 0;
-// }
 
 void Get_rating_to_film(vector<string> parse_string, int i)
 {
@@ -141,6 +135,29 @@ void Get_rating_to_film(vector<string> parse_string, int i)
         };
         // cout << 1 << endl;
     };
+}
+
+void Get_local_name_of_film(vector<string> parse_string, int i)
+{
+    if (i == 0){
+        //fix it
+        //нужно проверка структуры таблицы
+        //std::cout << "pass" << std::endl;
+        return;
+    };
+
+    //cout << years_check(parse_string, year) << endl;
+    map <string, _film_> :: iterator current_film;
+    current_film = mp.find(parse_string[0]);
+
+    if(current_film != mp.end())
+    {
+        if(parse_string[3] == "RU")
+        {
+            // cout << parse_string[2] << endl;
+            current_film->second.local_name = parse_string[2];
+        };
+    };  
 }
 
 void Read_str_from_file(string path, void (*func)(vector<string>, int))
@@ -181,15 +198,95 @@ void Read_str_from_file(string path, void (*func)(vector<string>, int))
     //std::cout << "End of file" << std::endl;
 };
 
-void Test_Read_str_from_file()
+bool Compare_two_film(_film_ const& l_film, _film_ const& r_film)
 {
-    //Read_str_from_file("data/example_data.tsv", &Get_data_with_year);
-    Read_str_from_file("data/title.basics.tsv", &Get_data_with_year);
-    Read_str_from_file("data/title.ratings.tsv", &Get_rating_to_film);
-    print_mp(mp);
+    return l_film.rating < r_film.rating;
+};
+
+bool Compare_two_name(string const& l_name, string const& r_name)
+{
+    return Compare_two_film(mp.find(l_name)->second, mp.find(r_name)->second);
+};
+
+void Sort_film_to_rating()
+{
+    vector <string> ID_list;
+
+    for (map <string, _film_> :: iterator it = mp.begin(); it != mp.end(); it++) 
+    {
+        ID_list.push_back(it->first);
+    };
+
+
+    for (int i = 0; i < ID_list.size(); ++i) {
+        // cout << ID_list[i] << " ";
+        for (int j = 0; j < ID_list.size() - 1; ++j)
+        {
+            if (Compare_two_name(ID_list[j + 1],ID_list[j]))
+            {
+                std:swap(ID_list[j + 1],ID_list[j]);
+            }
+        }
+    }
+
+    for (int i = 0; i < ID_list.size(); ++i) {
+        cout << mp.find(ID_list[i])->second << endl;
+    }
 }
 
-int main()
+
+// void Test_Read_str_from_file()
+// {
+//     // Read_str_from_file("data/example_data.tsv", &Get_data_with_year);
+//     Read_str_from_file("data/title.basics.tsv", &Get_data_with_year);
+//     Read_str_from_file("data/title.ratings.tsv", &Get_rating_to_film);
+//     Read_str_from_file("data/title.akas.tsv", &Get_local_name_of_film);
+//     // print_mp(mp);
+//     Sort_film_to_rating();
+// }
+
+void Get_path(int argc, char *argv[])
 {
-    Test_Read_str_from_file();
+    //добавить передачу года поиска фильма
+    string path_to_name, path_to_rating, path_to_year;
+    if(argc == 5)
+    {
+        path_to_year = argv[1];
+        path_to_rating = argv[2];
+        path_to_name = argv[3];
+    }
+
+    // if(argc == 3*2+1)
+    // {
+    //     while(int i = 1; i < argc; ++i)
+    //     {
+    //         switch ( argv[i] ) {
+    //             case "":
+    //                 // Code
+    //                 break;
+    //             case c:
+    //                 // Code
+    //                 break;
+    //             default:
+    //                 // Code
+    //                 break;
+    //     }
+    // }
+
+    // cout << "path_to_year: " << path_to_year << endl;
+    // cout << "path_to_rating: " << path_to_rating << endl;
+    // cout << "path_to_name: " << path_to_name << endl;
+
+    Read_str_from_file(path_to_year, &Get_data_with_year);
+    Read_str_from_file(path_to_rating, &Get_rating_to_film);
+    Read_str_from_file(path_to_name, &Get_local_name_of_film);
+    // print_mp(mp);
+    Sort_film_to_rating();
+
+}
+
+int main(int argc, char *argv[])
+{
+    //Test_Read_str_from_file();
+    Get_path(argc, argv);
 }
