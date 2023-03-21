@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-#include <string> 
 #include <vector> 
 #include <sstream> 
 #include <iostream> 
@@ -22,6 +21,23 @@ struct _film_
     }
 };
 
+struct _input_data_
+{
+    int year = 0;
+    std::string path_to_year;
+    std::string path_to_rating;
+    std::string path_to_name;
+
+    friend std::ostream& operator<< (std::ostream& stream, const _input_data_& input_data) {
+        stream << "year: " << input_data.year <<  ", path_to_year: " << input_data.path_to_year << "path_to_rating: " << input_data.path_to_rating <<  ", path_to_name: " << input_data.path_to_name  << std::endl;
+        return stream;
+    }
+
+    inline bool valid() const
+    {
+        return !path_to_year.empty() && !path_to_rating.empty() && !path_to_name.empty() && year != 0;
+    }
+};
 
 map <string, _film_> mp;
 
@@ -235,58 +251,115 @@ void Sort_film_to_rating()
 }
 
 
-// void Test_Read_str_from_file()
-// {
-//     // Read_str_from_file("data/example_data.tsv", &Get_data_with_year);
-//     Read_str_from_file("data/title.basics.tsv", &Get_data_with_year);
-//     Read_str_from_file("data/title.ratings.tsv", &Get_rating_to_film);
-//     Read_str_from_file("data/title.akas.tsv", &Get_local_name_of_film);
-//     // print_mp(mp);
-//     Sort_film_to_rating();
-// }
-
-void Get_path(int argc, char *argv[])
+void Test_Read_str_from_file()
 {
-    //добавить передачу года поиска фильма
-    string path_to_name, path_to_rating, path_to_year;
-    if(argc == 5)
-    {
-        path_to_year = argv[1];
-        path_to_rating = argv[2];
-        path_to_name = argv[3];
+    //Read_str_from_file("data/example_data.tsv", &Get_data_with_year);
+    Read_str_from_file("data/title.basics.tsv", &Get_data_with_year);
+    Read_str_from_file("data/title.ratings.tsv", &Get_rating_to_film);
+    Read_str_from_file("data/title.akas.tsv", &Get_local_name_of_film);
+    // print_mp(mp);
+    Sort_film_to_rating();
+}
+
+bool Get_path(int argc, char *argv[], struct _input_data_ &input_data)
+{
+
+    std::string current_exec_name = argv[0]; // Name of the current exec program
+    std::vector<std::string> all_args;
+
+    if (argc > 1) {
+        all_args.assign(argv + 1, argv + argc);
     }
 
-    // if(argc == 3*2+1)
+    // cout << all_args[0] << endl;
+    // cout << all_args[0+1] << endl;
+
+    int len_of_input_data = 8;
+    if (all_args.size() == len_of_input_data) {  
+        for (int i = 0; i < len_of_input_data; ++i)
+        {
+            // cout << all_args[i] << endl;    
+            if (all_args[i] == "-find_year"){
+                if(_stoi(all_args[i + 1],&input_data.year) != 0)
+                {
+                    return false;
+                }
+                //input_data.year = _stoi(all_args[i]);
+            }else if(all_args[i] == "-path_to_year"){
+                input_data.path_to_year = all_args[i + 1];
+            }else if(all_args[i] == "-path_to_rating"){
+                input_data.path_to_rating = all_args[i + 1];
+            }else if(all_args[i] == "-path_to_name"){
+                input_data.path_to_name = all_args[i + 1];
+            }
+        }
+    }
+    // std::cout << input_data << endl;
+    return true;
+    // if(argc == 6)
     // {
-    //     while(int i = 1; i < argc; ++i)
+    //     // ss << c;
+    //     // ss >> s;
+    //     for (char* i = argv[1];i != "\0"; i++)
     //     {
-    //         switch ( argv[i] ) {
-    //             case "":
-    //                 // Code
-    //                 break;
-    //             case c:
-    //                 // Code
-    //                 break;
-    //             default:
-    //                 // Code
-    //                 break;
+    //         cout << i;
     //     }
+    //     year = *argv[1];
+    //     ss << argv[2];
+    //     ss >> path_to_year;
+    //     path_to_rating = *argv[3];
+    //     path_to_name = argv[4];
     // }
 
+    // // if(argc == 3*2+1)
+    // // {
+    // //     while(int i = 1; i < argc; ++i)
+    // //     {
+    // //         switch ( argv[i] ) {
+    // //             case "":
+    // //                 // Code
+    // //                 break;
+    // //             case c:
+    // //                 // Code
+    // //                 break;
+    // //             default:
+    // //                 // Code
+    // //                 break;
+    // //     }
+    // // }
+
+    // cout << "year: " << *argv[1] << endl;
+    // // cout << "year: " << year.append(strlen(argv[1]),*argv[1]) << endl;
     // cout << "path_to_year: " << path_to_year << endl;
     // cout << "path_to_rating: " << path_to_rating << endl;
     // cout << "path_to_name: " << path_to_name << endl;
+    // //std::getline(ss, path_to_name);
+    // ss << argv[2];
+    // cout << "size: " << getline(ss) << endl;
 
-    Read_str_from_file(path_to_year, &Get_data_with_year);
-    Read_str_from_file(path_to_rating, &Get_rating_to_film);
-    Read_str_from_file(path_to_name, &Get_local_name_of_film);
-    // print_mp(mp);
-    Sort_film_to_rating();
+    // Read_str_from_file(path_to_year, &Get_data_with_year);
+    // Read_str_from_file(path_to_rating, &Get_rating_to_film);
+    // Read_str_from_file(path_to_name, &Get_local_name_of_film);
+    // // print_mp(mp);
+    // Sort_film_to_rating();
 
+}
+
+int Get_films(int argc, char *argv[])
+{
+    struct _input_data_ input_data;
+    Get_path(argc, argv, input_data);
+    if (input_data.valid() != true)
+    {
+        return 1;
+    }
+    std::cout << input_data << endl;
+    return 0;
 }
 
 int main(int argc, char *argv[])
 {
-    //Test_Read_str_from_file();
-    Get_path(argc, argv);
+    Get_films(argc, argv);
+    // Test_Read_str_from_file();
+
 }
