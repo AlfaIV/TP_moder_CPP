@@ -160,8 +160,8 @@ int Get_films(int argc, char *argv[])
         return 1;
     };
 
-    print_mp(films);
+    // print_mp(films);
     
-    // Sort_film_to_rating();
+    Sort_film_to_rating(films);
     return 0;
 }

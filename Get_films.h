@@ -12,6 +12,7 @@
     #include "Get_year/Get_year.h"
     #include "Get_rating/Get_rating.h"
     #include "Get_local/Get_local.h"
+    #include "Sort_films/Sort_films.h"
     
     using namespace std;
 
@@ -22,8 +23,8 @@
         int rating;
         std::string local_name;
         friend std::ostream& operator<< (std::ostream& stream, const _film_& film) {
-            stream << "id: " << film.id << ", name: " << film.name << ", local_name: " << film.local_name <<  ", rating: " << film.rating  << std::endl;
-            // stream << "Название фильма: " << film.local_name <<  ", Рейтинг: " << film.rating  << std::endl;
+            // stream << "id: " << film.id << ", name: " << film.name << ", local_name: " << film.local_name <<  ", rating: " << film.rating  << std::endl;
+            stream << "Название фильма: " << film.local_name <<  ", Рейтинг: " << film.rating  << std::endl;
             return stream;
         }
     };
