@@ -1,10 +1,15 @@
 #ifndef GET_FILMS
 #define GET_FILMS
 
+    #include <fstream>
+    #include <sstream> 
+    #include <functional>
+    #include <iostream> 
     #include <string.h>
     #include <vector> 
-    #include <iostream> 
-    #include <sstream> 
+    #include <map>
+    
+    #include "Get_year.h"
     
     using namespace std;
 
@@ -15,8 +20,8 @@
         int rating;
         std::string local_name;
         friend std::ostream& operator<< (std::ostream& stream, const _film_& film) {
-            // stream << "id: " << film.id << ", name: " << film.name << ", local_name: " << film.local_name <<  ", rating: " << film.rating  << std::endl;
-            stream << "Название фильма: " << film.local_name <<  ", Рейтинг: " << film.rating  << std::endl;
+            stream << "id: " << film.id << ", name: " << film.name << ", local_name: " << film.local_name <<  ", rating: " << film.rating  << std::endl;
+            // stream << "Название фильма: " << film.local_name <<  ", Рейтинг: " << film.rating  << std::endl;
             return stream;
         }
     };
@@ -47,6 +52,11 @@
     void tokenize(std::string const &str, const char delim,
             std::vector<std::string> &out);
     int _stoi(std::string str, int* p_value);
-    void Read_str_from_file(string path, void (*func)(vector<string>, int));
 
+    int Read_str_from_file(string path, 
+                            std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
+                            map <string, _film_> &films,
+                            struct _input_data_ &input_data);
+
+    void print_mp(map <string, struct _film_> &mp);
 #endif

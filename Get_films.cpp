@@ -37,7 +37,10 @@ void tokenize(std::string const &str, const char delim,
     }
 }
 
-int Read_str_from_file(string path, void (*func)(vector<string>), bool (*func_for_cheak)(vector<string>))
+int Read_str_from_file(string path, 
+                        std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
+                        map <string, _film_> &films,
+                        struct _input_data_ &input_data)
 {
 
     string line;
@@ -45,20 +48,12 @@ int Read_str_from_file(string path, void (*func)(vector<string>), bool (*func_fo
     ifstream in(path); // окрываем файл для чтения
     if (in.is_open())
     {
-        getline(in, line);
+        // getline(in, line);
         //std::cout << line << std::endl;
         if (in.is_open())
         {
             int i = 0;
             //проверка корректоности данных таблицы
-
-            getline(in, line);
-            vector<string> parse_string;
-            tokenize(line,'\t',parse_string);
-            if(func_for_cheak(parse_string) != true)
-            {
-                return 1;
-            };
 
             while (getline(in, line))
             {
@@ -69,7 +64,14 @@ int Read_str_from_file(string path, void (*func)(vector<string>), bool (*func_fo
 
                 // for (int c = 0; c < parse_string.size(); ++c) cout << parse_string[c] << endl;
                 // cout << std::endl;
-                func(parse_string, i);
+
+                if(func(parse_string,i,films,input_data) != 0)
+                {
+                    return 1;
+                };
+                if(i == 0){
+                    i += 1;   
+                }
                 
             };
         };
@@ -117,6 +119,15 @@ bool Get_path(int argc, char *argv[], struct _input_data_ &input_data)
     return true;
 }
 
+void print_mp(map <string, struct _film_> &mp)
+{
+    map <string, struct _film_> :: iterator it = mp.begin();
+    for (int i = 0; it != mp.end(); it++, i++) {  // выводим их
+        //cout << it->first << endl;
+        cout << it->second << endl;
+
+    };
+};
 
 int Get_films(int argc, char *argv[])
 {
@@ -126,15 +137,18 @@ int Get_films(int argc, char *argv[])
     {
         return 1;
     }
-    std::cout << input_data << endl;
+    // std::cout << input_data << endl;
 
-    // map <string, _film_> films;
+    map <string, _film_> films;
 
-    // Read_str_from_file(input_data.path_to_year, &Get_data_with_year);
-    // Read_str_from_file("data/title.ratings.tsv", &Get_rating_to_film);
+    //
+
+    Read_str_from_file(input_data.path_to_year, &Get_data_with_year, films, input_data);
+    // cout << films << endl;
+    // Read_str_from_file(input_data.path_to_year, &Get_data_with_year, films, input_data);
     // Read_str_from_file("data/title.akas.tsv", &Get_local_name_of_film);
 
-    // // print_mp(mp);
+    print_mp(films);
     
     // Sort_film_to_rating();
     return 0;
