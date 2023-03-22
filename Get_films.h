@@ -10,7 +10,7 @@
     #include <map>
     
     #include "Get_year/Get_year.h"
-    #include "Get_rating.h"
+    #include "Get_rating/Get_rating.h"
     
     using namespace std;
 
