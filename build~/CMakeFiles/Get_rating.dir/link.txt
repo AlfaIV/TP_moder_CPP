@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGet_rating.a CMakeFiles/Get_rating.dir/Get_rating/Get_rating.cpp.o
+/usr/bin/ranlib libGet_rating.a

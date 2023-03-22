@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGet_year.a CMakeFiles/Get_year.dir/Get_year/Get_year.cpp.o
+/usr/bin/ranlib libGet_year.a

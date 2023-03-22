@@ -135,6 +135,7 @@ int Get_films(int argc, char *argv[])
     Get_path(argc, argv, input_data);
     if (input_data.valid() != true)
     {
+        cout << "No current input, please retry" << endl;
         return 1;
     }
     // std::cout << input_data << endl;

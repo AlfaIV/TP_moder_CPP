@@ -1,15 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string.h>
-#include <vector> 
-#include <sstream> 
-#include <iostream> 
-#include <map>
-
 #include "Get_films.h"
-// #include "Get_year.h"
-
-using namespace std; 
 
 
 // void Test_Read_str_from_file()
@@ -26,5 +15,5 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     Get_films(argc, argv);
-
+    // cout << "hELLOW_WORLD" << endl;
 }

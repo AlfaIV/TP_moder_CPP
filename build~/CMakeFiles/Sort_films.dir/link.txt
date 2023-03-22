@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSort_films.a CMakeFiles/Sort_films.dir/Sort_films/Sort_films.cpp.o
+/usr/bin/ranlib libSort_films.a

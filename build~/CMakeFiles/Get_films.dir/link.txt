@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGet_films.a CMakeFiles/Get_films.dir/Get_films.cpp.o
+/usr/bin/ranlib libGet_films.a

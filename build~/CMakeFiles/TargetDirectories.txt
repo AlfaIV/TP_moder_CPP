@@ -1,0 +1,8 @@
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/Get_films.dir
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/Get_year.dir
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/Get_local.dir
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/Get_rating.dir
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/Sort_films.dir
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/main.dir
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/edit_cache.dir
+/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build~/CMakeFiles/rebuild_cache.dir
