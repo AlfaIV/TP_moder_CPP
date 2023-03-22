@@ -143,9 +143,17 @@ int Get_films(int argc, char *argv[])
 
     //
 
-    Read_str_from_file(input_data.path_to_year, &Get_data_with_year, films, input_data);
+    if(Read_str_from_file(input_data.path_to_year, &Get_data_with_year, films, input_data) == 1)
+    {
+        cout << "Error" << endl;
+        return 1;
+    };
     // cout << films << endl;
-    // Read_str_from_file(input_data.path_to_year, &Get_data_with_year, films, input_data);
+    if(Read_str_from_file(input_data.path_to_rating, &Get_rating_to_film, films, input_data))
+    {
+        cout << "Error" << endl;
+        return 1;
+    };
     // Read_str_from_file("data/title.akas.tsv", &Get_local_name_of_film);
 
     print_mp(films);

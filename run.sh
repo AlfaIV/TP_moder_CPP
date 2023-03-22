@@ -11,10 +11,10 @@ rm -df build/*
 # gunzip title.basics.tsv.gz
 # cd ..
 
-g++ main.cpp Get_films.cpp Get_year.cpp -o build/out
+g++ main.cpp Get_films.cpp Get_year.cpp Get_rating.cpp -o build/out
 chmod +x build/out
-# ./build/out -year 1978 -path_to_years data/itle.basics.tsv - data/title.ratings.tsv data/title.akas.tsv
-./build/out -find_year 1978 -path_to_year data/title.basics.tsv -path_to_rating data/title.ratings.tsv -path_to_name data/title.akas.tsv
+# ./build/out -find_year 1978 -path_to_year data/title.basics.tsv -path_to_rating data/title.ratings.tsv -path_to_name data/title.akas.tsv
+./build/out -find_year 1895 -path_to_name data/title.akas.tsv -path_to_year data/exampl_basics.tsv -path_to_rating data/exampl_rating.tsv
 # ./build/out
 # cd build/
 # make ../
