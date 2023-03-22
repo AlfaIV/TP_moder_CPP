@@ -13,34 +13,6 @@ using namespace std;
 
 // map <string, _film_> mp;
 
-
-
-
-
-
-// void Get_local_name_of_film(vector<string> parse_string, int i)
-// {
-//     if (i == 0){
-//         //fix it
-//         //нужно проверка структуры таблицы
-//         //std::cout << "pass" << std::endl;
-//         return;
-//     };
-
-//     //cout << years_check(parse_string, year) << endl;
-//     map <string, _film_> :: iterator current_film;
-//     current_film = mp.find(parse_string[0]);
-
-//     if(current_film != mp.end())
-//     {
-//         if(parse_string[3] == "RU")
-//         {
-//             // cout << parse_string[2] << endl;
-//             current_film->second.local_name = parse_string[2];
-//         };
-//     };  
-// }
-
 // bool Compare_two_film(_film_ const& l_film, _film_ const& r_film)
 // {
 //     return l_film.rating < r_film.rating;

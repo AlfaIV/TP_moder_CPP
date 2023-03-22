@@ -23,7 +23,4 @@
                         map <string, struct _film_> &mp,
                         struct _input_data_ &input_data);
 
-                        // func(parse_string,i,films,input_data)
-    // bool Cheak_data_with_year((vector<string>), map <string, _film_> &films);
-
 #endif

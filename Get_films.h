@@ -11,6 +11,7 @@
     
     #include "Get_year/Get_year.h"
     #include "Get_rating/Get_rating.h"
+    #include "Get_local/Get_local.h"
     
     using namespace std;
 

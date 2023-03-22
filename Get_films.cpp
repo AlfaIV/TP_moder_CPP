@@ -154,7 +154,11 @@ int Get_films(int argc, char *argv[])
         cout << "Error" << endl;
         return 1;
     };
-    // Read_str_from_file("data/title.akas.tsv", &Get_local_name_of_film);
+    if(Read_str_from_file(input_data.path_to_name, &Get_local_name_of_film, films, input_data))
+    {
+        cout << "Error" << endl;
+        return 1;
+    };
 
     print_mp(films);
     
