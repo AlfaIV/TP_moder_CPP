@@ -1,2 +1,0 @@
-/usr/bin/ar qc libGet_local.a CMakeFiles/Get_local.dir/Get_local/Get_local.cpp.o
-/usr/bin/ranlib libGet_local.a
