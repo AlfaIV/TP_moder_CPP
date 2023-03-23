@@ -1,8 +1,6 @@
 #include "Get_films.h"
 
 int _stoi(std::string str, int* p_value) {
-    // wrapping std::stoi because it may throw an exception
-
     try {
         *p_value = std::stoi(str);
         return 0;
@@ -28,7 +26,6 @@ int _stoi(std::string str, int* p_value) {
 void tokenize(std::string const &str, const char delim,
             std::vector<std::string> &out)
 {
-    // строим поток из строки
     std::stringstream ss(str);
  
     std::string s;
@@ -122,7 +119,7 @@ bool Get_path(int argc, char *argv[], struct _input_data_ &input_data)
 void print_mp(map <string, struct _film_> &mp)
 {
     map <string, struct _film_> :: iterator it = mp.begin();
-    for (int i = 0; it != mp.end(); it++, i++) {  // выводим их
+    for (int i = 0; it != mp.end(); it++, i++) {
         //cout << it->first << endl;
         cout << it->second << endl;
 

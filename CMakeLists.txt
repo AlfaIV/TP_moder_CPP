@@ -5,16 +5,14 @@ cmake_minimum_required(VERSION 3.2)
 project(Parse_IMDB_data)
 
 # set the C++ standard
-# set(CMAKE_CXX_COMPILER g++)
-# set(CMAKE_CXX_FLAGS_RELEASE_INIT "-Wall")
 set(CMAKE_CXX_STANDARD_REQUIRED on)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
+
 
 # # compile an object library for producing a shared and dynamic library
 add_library(Get_films
             STATIC
-            Get_films.cpp
-            Get_films.h)
+            Get_films/Get_films.cpp
+            Get_films/Get_films.h)
 
 add_library(Get_year
             STATIC
@@ -41,7 +39,6 @@ add_library(Sort_films
 # generate executable
 add_executable(main main.cpp)
 
-# target_compile_definitions(main PRIVATE USE_DEBUG)
 # link to shared library 
 target_link_libraries(main
                     Get_films

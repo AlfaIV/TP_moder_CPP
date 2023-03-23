@@ -3,15 +3,12 @@
 #ifndef Get_rating
 #define Get_rating
 
-    // #include <fstream>
-    // #include <sstream> 
-    // #include <iostream> 
     #include <string>
     #include <vector> 
     #include <map>
 
 
-    #include "../Get_films.h"
+    #include "../Get_films/Get_films.h"
 
     
     using namespace std;
