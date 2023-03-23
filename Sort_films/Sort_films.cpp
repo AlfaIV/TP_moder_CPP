@@ -2,6 +2,9 @@
 
 #include "Sort_films.h"
 
+// 
+// функции для реалитзации сравнений по назвнию на основе рейтинга
+
 bool Compare_two_film(struct _film_ const& l_film, struct _film_ const& r_film)
 {
     return l_film.rating < r_film.rating;
@@ -14,6 +17,9 @@ bool Compare_two_name(string const& l_name, string const& r_name,  map <string, 
 
 void Sort_film_to_rating(map <string, struct _film_> &mp)
 {
+    // функция которая преобразует словарь, с отобранными фильмами,
+    // в отсортированный по рейтингу вектор
+    // и вывод его(вектор)
     vector <string> ID_list;
 
     for (map <string, _film_> :: iterator it = mp.begin(); it != mp.end(); it++) 

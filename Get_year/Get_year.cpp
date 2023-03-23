@@ -21,7 +21,11 @@ int Get_data_with_year(vector<string> &parse_string,
                     map <string, struct _film_> &mp,
                     struct _input_data_ &input_data)
 {
+    // функция получения года выпуска фильма
+    
     int year = input_data.year;
+
+    // проверка корректности таблицы
     if (i == 0 ){
         // cout << parse_string[0] << " " << parse_string[2] << " " << parse_string[4] << endl;
         if (parse_string[0] == "tconst" && parse_string[2] == "primaryTitle" && parse_string[4] == "isAdult")

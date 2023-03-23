@@ -7,6 +7,10 @@ int Get_local_name_of_film(vector<string> &parse_string,
                         map <string, struct _film_> &mp,
                         struct _input_data_ &input_data)
 {
+    // функция поиска российского названия фильма
+
+
+    // проверка корректности таблицы
     if (i == 0 ){
         // cout << parse_string[0] << " " << parse_string[1] << " " << parse_string[2] << endl;
         if (parse_string[0] == "titleId" && parse_string[3] == "region" && parse_string[2] == "title")

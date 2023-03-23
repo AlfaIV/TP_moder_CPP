@@ -1,6 +1,7 @@
 #include "Get_films.h"
 
 int _stoi(std::string str, int* p_value) {
+    //безопасная обертка над stoi
     try {
         *p_value = std::stoi(str);
         return 0;
@@ -26,6 +27,7 @@ int _stoi(std::string str, int* p_value) {
 void tokenize(std::string const &str, const char delim,
             std::vector<std::string> &out)
 {
+    // парсинг строки на слова
     std::stringstream ss(str);
  
     std::string s;
@@ -39,7 +41,7 @@ int Read_str_from_file(string path,
                         map <string, _film_> &films,
                         struct _input_data_ &input_data)
 {
-
+    // функция, которая считывает файл и строку разбитую на слова передает в функцию
     string line;
  
     ifstream in(path); // окрываем файл для чтения
@@ -81,6 +83,7 @@ int Read_str_from_file(string path,
 
 bool Get_path(int argc, char *argv[], struct _input_data_ &input_data)
 {
+    //обработка ввода из CLI
 
     std::string current_exec_name = argv[0]; // Name of the current exec program
     std::vector<std::string> all_args;
@@ -128,6 +131,7 @@ void print_mp(map <string, struct _film_> &mp)
 
 int Get_films(int argc, char *argv[])
 {
+    // основная функция обработчик, находиться в main
     struct _input_data_ input_data;
     Get_path(argc, argv, input_data);
     if (input_data.valid() != true)
@@ -139,19 +143,20 @@ int Get_films(int argc, char *argv[])
 
     map <string, _film_> films;
 
-    //
-
+    // блок обработки первого файла с именами фильмов и годами
     if(Read_str_from_file(input_data.path_to_year, &Get_data_with_year, films, input_data) == 1)
     {
         cout << "Error" << endl;
         return 1;
     };
-    // cout << films << endl;
+    // соответсвенно обработка файла с рейтингами фильмов
     if(Read_str_from_file(input_data.path_to_rating, &Get_rating_to_film, films, input_data))
     {
         cout << "Error" << endl;
         return 1;
     };
+    // поиск русского названия фильма
+    // 
     if(Read_str_from_file(input_data.path_to_name, &Get_local_name_of_film, films, input_data))
     {
         cout << "Error" << endl;
@@ -159,7 +164,8 @@ int Get_films(int argc, char *argv[])
     };
 
     // print_mp(films);
-    
+    // 
+    // вывод и сортировка словаря с фильмами
     Sort_film_to_rating(films);
     return 0;
 }

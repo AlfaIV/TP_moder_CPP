@@ -4,8 +4,13 @@
 
 int Get_rating_to_film(vector<string> &parse_string, int i, map <string, struct _film_> &mp, struct _input_data_ &input_data)
 {
+    // считывание рейтинга фильма
+    // 
     int rating = 1e3;
 
+
+    // 
+    // проверка корректности таблиц
     if (i == 0 ){
         // cout << parse_string[0] << " " << parse_string[1] << " " << parse_string[2] << endl;
         if (parse_string[0] == "tconst" && parse_string[1] == "averageRating" && parse_string[2] == "numVotes")
