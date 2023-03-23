@@ -20,4 +20,4 @@ clear
 
 cmake -S . -B build
 cmake --build build
-./build/main -find_year 1895 -path_to_name data/title.akas.tsv -path_to_year data/exampl_basics.tsv -path_to_rating data/exampl_rating.tsv
+# ./build/main -find_year 1895 -path_to_name data/title.akas.tsv -path_to_year data/exampl_basics.tsv -path_to_rating data/exampl_rating.tsv
