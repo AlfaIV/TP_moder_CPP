@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 # cd /home/alfaiv/Code/TP_VK/modern_cpp/HM1
-rm -rf build/*
+# rm -rf build/*
 
 # cd data
 # wget https://datasets.imdbws.com/title.akas.tsv.gz
