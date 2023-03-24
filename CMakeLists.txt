@@ -7,34 +7,36 @@ project(Parse_IMDB_data)
 # set the C++ standard
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 
+include_directories(header)
+include_directories(src)
 
 # # compile an object library for producing a shared and dynamic library
 add_library(Get_films
             STATIC
-            Get_films/Get_films.cpp
-            Get_films/Get_films.h)
+            src/Get_films.cpp
+            header/Get_films.h)
 
 add_library(Get_year
             STATIC
-            Get_year/Get_year.cpp
-            Get_year/Get_year.h)
+            src/Get_year.cpp
+            header/Get_year.h)
 
 add_library(Get_local
             STATIC
-            Get_local/Get_local.cpp
-            Get_local/Get_local.h) 
+            src/Get_local.cpp
+            header/Get_local.h) 
 
 
 add_library(Get_rating
             STATIC
-            Get_rating/Get_rating.cpp
-            Get_rating/Get_rating.h)   
+            src/Get_rating.cpp
+            header/Get_rating.h)   
             
 
 add_library(Sort_films
             STATIC
-            Sort_films/Sort_films.cpp
-            Sort_films/Sort_films.h)    
+            src/Sort_films.cpp
+            header/Sort_films.h)    
 
 # generate executable
 add_executable(main main.cpp)

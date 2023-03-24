@@ -9,10 +9,10 @@
     #include <vector> 
     #include <map>
     
-    #include "../Get_year/Get_year.h"
-    #include "../Get_rating/Get_rating.h"
-    #include "../Get_local/Get_local.h"
-    #include "../Sort_films/Sort_films.h"
+    #include "Get_year.h"
+    #include "Get_rating.h"
+    #include "Get_local.h"
+    #include "Sort_films.h"
     
     using namespace std;
 
