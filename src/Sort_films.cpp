@@ -5,14 +5,17 @@
 // 
 // функции для реалитзации сравнений по назвнию на основе рейтинга
 
-bool compareTwoFilm(struct _film_ const& l_film, struct _film_ const& r_film)
+bool compareTwoFilm(struct _film_ const& lFilm,
+                    struct _film_ const& rFilm)
 {
-    return l_film.rating < r_film.rating;
+    return lFilm.rating < rFilm.rating;
 };
 
-bool compareTwoName(string const& l_name, string const& r_name,  map <string, struct _film_> &mp)
+bool compareTwoName(string const& lName,
+                    string const& rName, 
+                    map <string, struct _film_> &mp)
 {
-    return compareTwoFilm(mp.find(l_name)->second, mp.find(r_name)->second);
+    return compareTwoFilm(mp.find(lName)->second, mp.find(rName)->second);
 };
 
 void sortFilmToRating(map <string, struct _film_> &mp)
@@ -20,26 +23,26 @@ void sortFilmToRating(map <string, struct _film_> &mp)
     // функция которая преобразует словарь, с отобранными фильмами,
     // в отсортированный по рейтингу вектор
     // и вывод его(вектор)
-    vector <string> ID_list;
+    vector<string> idList;
 
     for (map <string, _film_> :: iterator it = mp.begin(); it != mp.end(); it++) 
     {
-        ID_list.push_back(it->first);
+        idList.push_back(it->first);
     };
 
 
-    for (int i = 0; i < ID_list.size(); ++i) {
-        // cout << ID_list[i] << " ";
-        for (int j = 0; j < ID_list.size() - 1; ++j)
+    for (int i = 0; i < idList.size(); ++i) {
+        // cout << idList[i] << " ";
+        for (int j = 0; j < idList.size() - 1; ++j)
         {
-            if (compareTwoName(ID_list[j],ID_list[j + 1], mp))
+            if (compareTwoName(idList[j],idList[j + 1], mp))
             {
-                std:swap(ID_list[j],ID_list[j + 1]);
+                std:swap(idList[j],idList[j + 1]);
             }
         }
     }
 
-    for (int i = 0; i < ID_list.size(); ++i) {
-        cout << mp.find(ID_list[i])->second << endl;
+    for (int i = 0; i < idList.size(); ++i) {
+        cout << mp.find(idList[i])->second << endl;
     }
 }

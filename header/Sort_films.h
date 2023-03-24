@@ -7,14 +7,17 @@
     #include <vector> 
     #include <map>
 
-
     #include "Get_films.h"
+
 
     
     using namespace std;
 
-    bool compareTwoName(string const& l_name, string const& r_name);
-    bool compareTwoFilm(struct _film_ const& l_film, struct _film_ const& r_film);
+    bool compareTwoName(string const& lName,
+                        string const& rName);
+
+    bool compareTwoFilm(struct _film_ const& lFilm,
+                        struct _film_ const& rFilm);
 
     void sortFilmToRating(map <string, struct _film_> &mp);
 

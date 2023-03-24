@@ -1,9 +1,9 @@
 #include "Get_films.h"
 
-int _stoi(std::string str, int* p_value) {
+int _stoi(std::string str, int* pValue) {
     //безопасная обертка над stoi
     try {
-        *p_value = std::stoi(str);
+        *pValue = std::stoi(str);
         return 0;
     }
 
@@ -24,7 +24,8 @@ int _stoi(std::string str, int* p_value) {
     }
 }
 
-void tokenize(std::string const &str, const char delim,
+void tokenize(std::string const &str,
+            const char delim,
             std::vector<std::string> &out)
 {
     // парсинг строки на слова
@@ -37,9 +38,9 @@ void tokenize(std::string const &str, const char delim,
 }
 
 int readStrFromFile(string path, 
-                        std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
-                        map <string, _film_> &films,
-                        struct _input_data_ &input_data)
+                    std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
+                    map <string, _film_> &films,
+                    struct _input_data_ &inputData)
 {
     // функция, которая считывает файл и строку разбитую на слова передает в функцию
     string line;
@@ -58,13 +59,13 @@ int readStrFromFile(string path,
             {
                 //std::cout << line << std::endl;
 
-                vector<string> parse_string;
-                tokenize(line,'\t',parse_string);
+                vector<string> parseString;
+                tokenize(line,'\t',parseString);
 
-                // for (int c = 0; c < parse_string.size(); ++c) cout << parse_string[c] << endl;
+                // for (int c = 0; c < parseString.size(); ++c) cout << parseString[c] << endl;
                 // cout << std::endl;
 
-                if(func(parse_string,i,films,input_data) != 0)
+                if(func(parseString, i, films, inputData) != 0)
                 {
                     return 1;
                 };
@@ -81,7 +82,7 @@ int readStrFromFile(string path,
     return 0;
 };
 
-bool getPath(int argc, char *argv[], struct _input_data_ &input_data)
+bool getPath(int argc, char *argv[], struct _input_data_ &inputData)
 {
     //обработка ввода из CLI
 
@@ -101,21 +102,21 @@ bool getPath(int argc, char *argv[], struct _input_data_ &input_data)
         {
             // cout << all_args[i] << endl;    
             if (all_args[i] == "-find_year"){
-                if(_stoi(all_args[i + 1],&input_data.year) != 0)
+                if(_stoi(all_args[i + 1],&inputData.year) != 0)
                 {
                     return false;
                 }
-                //input_data.year = _stoi(all_args[i]);
+                //inputData.year = _stoi(all_args[i]);
             }else if(all_args[i] == "-path_to_year"){
-                input_data.path_to_year = all_args[i + 1];
+                inputData.path_to_year = all_args[i + 1];
             }else if(all_args[i] == "-path_to_rating"){
-                input_data.path_to_rating = all_args[i + 1];
+                inputData.path_to_rating = all_args[i + 1];
             }else if(all_args[i] == "-path_to_name"){
-                input_data.path_to_name = all_args[i + 1];
+                inputData.path_to_name = all_args[i + 1];
             }
         }
     }
-    // std::cout << input_data << endl;
+    // std::cout << inputData << endl;
     return true;
 }
 
@@ -132,32 +133,32 @@ void printMap(map <string, struct _film_> &mp)
 int getFilms(int argc, char *argv[])
 {
     // основная функция обработчик, находиться в main
-    struct _input_data_ input_data;
-    getPath(argc, argv, input_data);
-    if (input_data.valid() != true)
+    struct _input_data_ inputData;
+    getPath(argc, argv, inputData);
+    if (inputData.valid() != true)
     {
         cout << "No current input, please retry" << endl;
         return 1;
     }
-    // std::cout << input_data << endl;
+    // std::cout << inputData << endl;
 
     map <string, _film_> films;
 
     // блок обработки первого файла с именами фильмов и годами
-    if(readStrFromFile(input_data.path_to_year, &getDataWithYear, films, input_data) == 1)
+    if(readStrFromFile(inputData.path_to_year, &getDataWithYear, films, inputData) == 1)
     {
         cout << "Error" << endl;
         return 1;
     };
     // соответсвенно обработка файла с рейтингами фильмов
-    if(readStrFromFile(input_data.path_to_rating, &getRatingToFilm, films, input_data))
+    if(readStrFromFile(inputData.path_to_rating, &getRatingToFilm, films, inputData))
     {
         cout << "Error" << endl;
         return 1;
     };
     // поиск русского названия фильма
     // 
-    if(readStrFromFile(input_data.path_to_name, &getLocalNameOfFilm, films, input_data))
+    if(readStrFromFile(inputData.path_to_name, &getLocalNameOfFilm, films, inputData))
     {
         cout << "Error" << endl;
         return 1;

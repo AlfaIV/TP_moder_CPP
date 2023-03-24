@@ -2,36 +2,38 @@
 
 #include "Get_local.h"
 
-int getLocalNameOfFilm(vector<string> &parse_string,
+int getLocalNameOfFilm(vector<string> &parseString,
                         int i,
                         map <string, struct _film_> &mp,
-                        struct _input_data_ &input_data)
+                        struct _input_data_ &inputData)
 {
     // функция поиска российского названия фильма
 
 
     // проверка корректности таблицы
     if (i == 0 ){
-        // cout << parse_string[0] << " " << parse_string[1] << " " << parse_string[2] << endl;
-        if (parse_string[0] == "titleId" && parse_string[3] == "region" && parse_string[2] == "title")
+        // cout << parseString[0] << " " << parseString[1] << " " << parseString[2] << endl;
+        if (parseString[0] == "titleId" &&
+            parseString[3] == "region" &&
+            parseString[2] == "title")
         {
             return 0;
         }else{
-            cout << "No corect data in path: " << input_data.path_to_name << endl;
+            cout << "No corect data in path: " << inputData.path_to_name << endl;
             return 1;
         }
     };
 
-    //cout << years_check(parse_string, year) << endl;
-    map <string, _film_> :: iterator current_film;
-    current_film = mp.find(parse_string[0]);
+    //cout << years_check(parseString, year) << endl;
+    map <string, _film_> :: iterator currentFilm;
+    currentFilm = mp.find(parseString[0]);
 
-    if(current_film != mp.end())
+    if(currentFilm != mp.end())
     {
-        if(parse_string[3] == "RU")
+        if(parseString[3] == "RU")
         {
-            // cout << parse_string[2] << endl;
-            current_film->second.local_name = parse_string[2];
+            // cout << parseString[2] << endl;
+            currentFilm->second.local_name = parseString[2];
         };
     };  
     return 0;

@@ -14,6 +14,8 @@
     #include "Get_local.h"
     #include "Sort_films.h"
     
+
+
     using namespace std;
 
     struct _film_
@@ -48,19 +50,26 @@
     };
 
 
-    int getFilms(int argc, char *argv[]);
+    int getFilms(int argc,
+                char *argv[]);
 
-    bool getPath(int argc, char *argv[], struct _input_data_ &input_data);
+    bool getPath(int argc,
+                char *argv[],
+                struct _input_data_ &input_data);
 
-    void tokenize(std::string const &str, const char delim,
-            std::vector<std::string> &out);
+    void tokenize(std::string const &str,
+                    const char delim,
+                    std::vector<std::string> &out);
     
-    int _stoi(std::string str, int* p_value);
+    int _stoi(std::string str,
+                int* pValue);
 
     int readStrFromFile(string path, 
-                            std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
-                            map <string, _film_> &films,
-                            struct _input_data_ &input_data);
+                        std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
+                        map <string, _film_> &films,
+                        struct _input_data_ &inputData);
 
-    void printMap(map <string, struct _film_> &mp);
+    void printMap(map <string,
+                struct _film_> &mp);
+                
 #endif
