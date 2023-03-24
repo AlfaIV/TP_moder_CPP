@@ -2,7 +2,7 @@
 
 #include "Get_rating.h"
 
-int Get_rating_to_film(vector<string> &parse_string, int i, map <string, struct _film_> &mp, struct _input_data_ &input_data)
+int getRatingToFilm(vector<string> &parse_string, int i, map <string, struct _film_> &mp, struct _input_data_ &input_data)
 {
     // считывание рейтинга фильма
     // 

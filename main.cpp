@@ -2,5 +2,5 @@
 
 int main(int argc, char *argv[])
 {
-    Get_films(argc, argv);
+    getFilms(argc, argv);
 }

@@ -2,7 +2,7 @@
 
 #include "Get_local.h"
 
-int Get_local_name_of_film(vector<string> &parse_string,
+int getLocalNameOfFilm(vector<string> &parse_string,
                         int i,
                         map <string, struct _film_> &mp,
                         struct _input_data_ &input_data)

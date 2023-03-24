@@ -4,7 +4,7 @@
 
 
 
-bool years_check(std::vector<std::string> str, int year)
+bool yearsCheck(std::vector<std::string> str, int year)
 {
     int IsAdult, _Year;
     if (_stoi(str[4], &IsAdult) == 0 && _stoi(str[5], &_Year) == 0)
@@ -16,7 +16,7 @@ bool years_check(std::vector<std::string> str, int year)
     return false;
 }
 
-int Get_data_with_year(vector<string> &parse_string,
+int getDataWithYear(vector<string> &parse_string,
                     int i,
                     map <string, struct _film_> &mp,
                     struct _input_data_ &input_data)
@@ -38,7 +38,7 @@ int Get_data_with_year(vector<string> &parse_string,
     };
 
     // //cout << years_check(parse_string, year) << endl;
-    if(years_check(parse_string, year) == 1)
+    if(yearsCheck(parse_string, year) == 1)
     {
         pair<string, _film_> p = make_pair(parse_string[0],_film_{parse_string[0],parse_string[2],-1});
         mp.insert(p);

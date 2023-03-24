@@ -36,7 +36,7 @@ void tokenize(std::string const &str, const char delim,
     }
 }
 
-int Read_str_from_file(string path, 
+int readStrFromFile(string path, 
                         std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
                         map <string, _film_> &films,
                         struct _input_data_ &input_data)
@@ -81,7 +81,7 @@ int Read_str_from_file(string path,
     return 0;
 };
 
-bool Get_path(int argc, char *argv[], struct _input_data_ &input_data)
+bool getPath(int argc, char *argv[], struct _input_data_ &input_data)
 {
     //обработка ввода из CLI
 
@@ -119,7 +119,7 @@ bool Get_path(int argc, char *argv[], struct _input_data_ &input_data)
     return true;
 }
 
-void print_mp(map <string, struct _film_> &mp)
+void printMap(map <string, struct _film_> &mp)
 {
     map <string, struct _film_> :: iterator it = mp.begin();
     for (int i = 0; it != mp.end(); it++, i++) {
@@ -129,11 +129,11 @@ void print_mp(map <string, struct _film_> &mp)
     };
 };
 
-int Get_films(int argc, char *argv[])
+int getFilms(int argc, char *argv[])
 {
     // основная функция обработчик, находиться в main
     struct _input_data_ input_data;
-    Get_path(argc, argv, input_data);
+    getPath(argc, argv, input_data);
     if (input_data.valid() != true)
     {
         cout << "No current input, please retry" << endl;
@@ -144,20 +144,20 @@ int Get_films(int argc, char *argv[])
     map <string, _film_> films;
 
     // блок обработки первого файла с именами фильмов и годами
-    if(Read_str_from_file(input_data.path_to_year, &Get_data_with_year, films, input_data) == 1)
+    if(readStrFromFile(input_data.path_to_year, &getDataWithYear, films, input_data) == 1)
     {
         cout << "Error" << endl;
         return 1;
     };
     // соответсвенно обработка файла с рейтингами фильмов
-    if(Read_str_from_file(input_data.path_to_rating, &Get_rating_to_film, films, input_data))
+    if(readStrFromFile(input_data.path_to_rating, &getRatingToFilm, films, input_data))
     {
         cout << "Error" << endl;
         return 1;
     };
     // поиск русского названия фильма
     // 
-    if(Read_str_from_file(input_data.path_to_name, &Get_local_name_of_film, films, input_data))
+    if(readStrFromFile(input_data.path_to_name, &getLocalNameOfFilm, films, input_data))
     {
         cout << "Error" << endl;
         return 1;
@@ -166,6 +166,6 @@ int Get_films(int argc, char *argv[])
     // print_mp(films);
     // 
     // вывод и сортировка словаря с фильмами
-    Sort_film_to_rating(films);
+    sortFilmToRating(films);
     return 0;
 }
