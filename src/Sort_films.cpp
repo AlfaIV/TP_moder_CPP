@@ -5,27 +5,27 @@
 // 
 // функции для реалитзации сравнений по назвнию на основе рейтинга
 
-bool compareTwoFilm(struct _film_ const& lFilm,
-                    struct _film_ const& rFilm)
+bool compareTwoFilm(struct strFilm const& lFilm,
+                    struct strFilm const& rFilm)
 {
     return lFilm.rating < rFilm.rating;
 };
 
 bool compareTwoName(string const& lName,
                     string const& rName, 
-                    map <string, struct _film_> &mp)
+                    map <string, struct strFilm> &mp)
 {
     return compareTwoFilm(mp.find(lName)->second, mp.find(rName)->second);
 };
 
-void sortFilmToRating(map <string, struct _film_> &mp)
+void sortFilmToRating(map <string, struct strFilm> &mp)
 {
     // функция которая преобразует словарь, с отобранными фильмами,
     // в отсортированный по рейтингу вектор
     // и вывод его(вектор)
     vector<string> idList;
 
-    for (map <string, _film_> :: iterator it = mp.begin(); it != mp.end(); it++) 
+    for (map <string, strFilm> :: iterator it = mp.begin(); it != mp.end(); it++) 
     {
         idList.push_back(it->first);
     };

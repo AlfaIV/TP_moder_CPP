@@ -39,7 +39,8 @@ add_library(Sort_films
             header/Sort_films.h)    
 
 # generate executable
-add_executable(main main.cpp)
+add_executable(main
+                src/main.cpp)
 
 # link to shared library 
 target_link_libraries(main

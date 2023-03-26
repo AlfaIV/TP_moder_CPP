@@ -18,34 +18,34 @@
 
     using namespace std;
 
-    struct _film_
+    struct strFilm
     {
         std::string id;
         std::string name;
         int rating;
         std::string local_name;
-        friend std::ostream& operator<< (std::ostream& stream, const _film_& film) {
+        friend std::ostream& operator<< (std::ostream& stream, const strFilm& film) {
             // stream << "id: " << film.id << ", name: " << film.name << ", local_name: " << film.local_name <<  ", rating: " << film.rating  << std::endl;
             stream << "Название фильма: " << film.local_name <<  ", Рейтинг: " << film.rating  << std::endl;
             return stream;
         }
     };
 
-    struct _input_data_
+    struct strInputData_
     {
         int year = 0;
-        std::string path_to_year;
-        std::string path_to_rating;
-        std::string path_to_name;
+        std::string pathToYear;
+        std::string pathToRating;
+        std::string pathToName;
 
-        friend std::ostream& operator<< (std::ostream& stream, const _input_data_& input_data) {
-            stream << "year: " << input_data.year <<  ", path_to_year: " << input_data.path_to_year << "path_to_rating: " << input_data.path_to_rating <<  ", path_to_name: " << input_data.path_to_name  << std::endl;
+        friend std::ostream& operator<< (std::ostream& stream, const strInputData_& input_data) {
+            stream << "year: " << input_data.year <<  ", path_to_year: " << input_data.pathToYear << "path_to_rating: " << input_data.pathToRating <<  ", path_to_name: " << input_data.pathToName  << std::endl;
             return stream;
         }
 
         inline bool valid() const
         {
-            return !path_to_year.empty() && !path_to_rating.empty() && !path_to_name.empty() && year != 0;
+            return !pathToYear.empty() && !pathToRating.empty() && !pathToName.empty() && year != 0;
         }
     };
 
@@ -55,7 +55,7 @@
 
     bool getPath(int argc,
                 char *argv[],
-                struct _input_data_ &input_data);
+                struct strInputData_ &input_data);
 
     void tokenize(std::string const &str,
                     const char delim,
@@ -65,11 +65,11 @@
                 int* pValue);
 
     int readStrFromFile(string path, 
-                        std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
-                        map <string, _film_> &films,
-                        struct _input_data_ &inputData);
+                        std::function<int (vector<string> &, int i, map <string, struct strFilm> &, struct strInputData_ &)> func,
+                        map <string, strFilm> &films,
+                        struct strInputData_ &inputData);
 
     void printMap(map <string,
-                struct _film_> &mp);
+                struct strFilm> &mp);
                 
 #endif

@@ -17,6 +17,6 @@
     int getRatingToFilm(vector<string> &parseString,
                         int i,
                         map <string,
-                        struct _film_> &mp,
-                        struct _input_data_ &inputData);
+                        struct strFilm> &mp,
+                        struct strInputData_ &inputData);
 #endif

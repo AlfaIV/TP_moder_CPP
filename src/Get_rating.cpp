@@ -5,8 +5,8 @@
 int getRatingToFilm(vector<string> &parseString,
                     int i,
                     map <string,
-                    struct _film_> &mp,
-                    struct _input_data_ &inputData)
+                    struct strFilm> &mp,
+                    struct strInputData_ &inputData)
 {
     // считывание рейтинга фильма
     // 
@@ -23,13 +23,13 @@ int getRatingToFilm(vector<string> &parseString,
         {
             return 0;
         }else{
-            cout << "No corect data in path: " << inputData.path_to_rating << endl;
+            cout << "No corect data in path: " << inputData.pathToRating << endl;
             return 1;
         }
     };
 
     //cout << years_check(parseString, year) << endl;
-    map <string, _film_> :: iterator currentFilm;
+    map <string, strFilm> :: iterator currentFilm;
     currentFilm = mp.find(parseString[0]);
 
     if(currentFilm != mp.end())

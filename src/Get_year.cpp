@@ -19,8 +19,8 @@ bool yearsCheck(std::vector<std::string> str,
 
 int getDataWithYear(vector<string> &parseString,
                     int i,
-                    map <string, struct _film_> &mp,
-                    struct _input_data_ &inputData)
+                    map <string, struct strFilm> &mp,
+                    struct strInputData_ &inputData)
 {
     // функция получения года выпуска фильма
     
@@ -35,7 +35,7 @@ int getDataWithYear(vector<string> &parseString,
         {
             return 0;
         }else{
-            cout << "No corect data in path: " << inputData.path_to_year << endl;
+            cout << "No corect data in path: " << inputData.pathToYear << endl;
             return 1;
         }
     };
@@ -43,7 +43,7 @@ int getDataWithYear(vector<string> &parseString,
     // //cout << years_check(parse_string, year) << endl;
     if(yearsCheck(parseString, year) == 1)
     {
-        pair<string, _film_> p = make_pair(parseString[0],_film_{parseString[0],parseString[2],-1});
+        pair<string, strFilm> p = make_pair(parseString[0],strFilm{parseString[0],parseString[2],-1});
         mp.insert(p);
     };
     return 0;

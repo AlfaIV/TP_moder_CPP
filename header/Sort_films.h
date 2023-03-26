@@ -16,9 +16,9 @@
     bool compareTwoName(string const& lName,
                         string const& rName);
 
-    bool compareTwoFilm(struct _film_ const& lFilm,
-                        struct _film_ const& rFilm);
+    bool compareTwoFilm(struct strFilm const& lFilm,
+                        struct strFilm const& rFilm);
 
-    void sortFilmToRating(map <string, struct _film_> &mp);
+    void sortFilmToRating(map <string, struct strFilm> &mp);
 
 #endif

@@ -4,8 +4,8 @@
 
 int getLocalNameOfFilm(vector<string> &parseString,
                         int i,
-                        map <string, struct _film_> &mp,
-                        struct _input_data_ &inputData)
+                        map <string, struct strFilm> &mp,
+                        struct strInputData_ &inputData)
 {
     // функция поиска российского названия фильма
 
@@ -19,13 +19,13 @@ int getLocalNameOfFilm(vector<string> &parseString,
         {
             return 0;
         }else{
-            cout << "No corect data in path: " << inputData.path_to_name << endl;
+            cout << "No corect data in path: " << inputData.pathToName << endl;
             return 1;
         }
     };
 
     //cout << years_check(parseString, year) << endl;
-    map <string, _film_> :: iterator currentFilm;
+    map <string, strFilm> :: iterator currentFilm;
     currentFilm = mp.find(parseString[0]);
 
     if(currentFilm != mp.end())

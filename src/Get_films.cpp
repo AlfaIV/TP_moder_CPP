@@ -38,9 +38,9 @@ void tokenize(std::string const &str,
 }
 
 int readStrFromFile(string path, 
-                    std::function<int (vector<string> &, int i, map <string, struct _film_> &, struct _input_data_ &)> func,
-                    map <string, _film_> &films,
-                    struct _input_data_ &inputData)
+                    std::function<int (vector<string> &, int i, map <string, struct strFilm> &, struct strInputData_ &)> func,
+                    map <string, strFilm> &films,
+                    struct strInputData_ &inputData)
 {
     // функция, которая считывает файл и строку разбитую на слова передает в функцию
     string line;
@@ -82,7 +82,7 @@ int readStrFromFile(string path,
     return 0;
 };
 
-bool getPath(int argc, char *argv[], struct _input_data_ &inputData)
+bool getPath(int argc, char *argv[], struct strInputData_ &inputData)
 {
     //обработка ввода из CLI
 
@@ -108,11 +108,11 @@ bool getPath(int argc, char *argv[], struct _input_data_ &inputData)
                 }
                 //inputData.year = _stoi(all_args[i]);
             }else if(all_args[i] == "-path_to_year"){
-                inputData.path_to_year = all_args[i + 1];
+                inputData.pathToYear = all_args[i + 1];
             }else if(all_args[i] == "-path_to_rating"){
-                inputData.path_to_rating = all_args[i + 1];
+                inputData.pathToRating = all_args[i + 1];
             }else if(all_args[i] == "-path_to_name"){
-                inputData.path_to_name = all_args[i + 1];
+                inputData.pathToName = all_args[i + 1];
             }
         }
     }
@@ -120,9 +120,9 @@ bool getPath(int argc, char *argv[], struct _input_data_ &inputData)
     return true;
 }
 
-void printMap(map <string, struct _film_> &mp)
+void printMap(map <string, struct strFilm> &mp)
 {
-    map <string, struct _film_> :: iterator it = mp.begin();
+    map <string, struct strFilm> :: iterator it = mp.begin();
     for (int i = 0; it != mp.end(); it++, i++) {
         //cout << it->first << endl;
         cout << it->second << endl;
@@ -133,7 +133,7 @@ void printMap(map <string, struct _film_> &mp)
 int getFilms(int argc, char *argv[])
 {
     // основная функция обработчик, находиться в main
-    struct _input_data_ inputData;
+    struct strInputData_ inputData;
     getPath(argc, argv, inputData);
     if (inputData.valid() != true)
     {
@@ -142,23 +142,23 @@ int getFilms(int argc, char *argv[])
     }
     // std::cout << inputData << endl;
 
-    map <string, _film_> films;
+    map <string, strFilm> films;
 
     // блок обработки первого файла с именами фильмов и годами
-    if(readStrFromFile(inputData.path_to_year, &getDataWithYear, films, inputData) == 1)
+    if(readStrFromFile(inputData.pathToYear, &getDataWithYear, films, inputData) == 1)
     {
         cout << "Error" << endl;
         return 1;
     };
     // соответсвенно обработка файла с рейтингами фильмов
-    if(readStrFromFile(inputData.path_to_rating, &getRatingToFilm, films, inputData))
+    if(readStrFromFile(inputData.pathToRating, &getRatingToFilm, films, inputData))
     {
         cout << "Error" << endl;
         return 1;
     };
     // поиск русского названия фильма
     // 
-    if(readStrFromFile(inputData.path_to_name, &getLocalNameOfFilm, films, inputData))
+    if(readStrFromFile(inputData.pathToName, &getLocalNameOfFilm, films, inputData))
     {
         cout << "Error" << endl;
         return 1;
