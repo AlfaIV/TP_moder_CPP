@@ -1,6 +1,6 @@
 #include "Get_films.h"
 
-int _stoi(std::string str, int* pValue) {
+int modStoi(std::string str, int* pValue) {
     //безопасная обертка над stoi
     try {
         *pValue = std::stoi(str);
@@ -38,9 +38,9 @@ void tokenize(std::string const &str,
 }
 
 int readStrFromFile(string path, 
-                    std::function<int (vector<string> &, int i, map <string, struct strFilm> &, struct strInputData_ &)> func,
+                    std::function<int (vector<string> &, int i, map <string, struct strFilm> &, struct strInputData &)> func,
                     map <string, strFilm> &films,
-                    struct strInputData_ &inputData)
+                    struct strInputData &inputData)
 {
     // функция, которая считывает файл и строку разбитую на слова передает в функцию
     string line;
@@ -82,7 +82,7 @@ int readStrFromFile(string path,
     return 0;
 };
 
-bool getPath(int argc, char *argv[], struct strInputData_ &inputData)
+bool getPath(int argc, char *argv[], struct strInputData &inputData)
 {
     //обработка ввода из CLI
 
@@ -102,11 +102,11 @@ bool getPath(int argc, char *argv[], struct strInputData_ &inputData)
         {
             // cout << all_args[i] << endl;    
             if (all_args[i] == "-find_year"){
-                if(_stoi(all_args[i + 1],&inputData.year) != 0)
+                if(modStoi(all_args[i + 1],&inputData.year) != 0)
                 {
                     return false;
                 }
-                //inputData.year = _stoi(all_args[i]);
+                //inputData.year = modStoi(all_args[i]);
             }else if(all_args[i] == "-path_to_year"){
                 inputData.pathToYear = all_args[i + 1];
             }else if(all_args[i] == "-path_to_rating"){
@@ -133,7 +133,7 @@ void printMap(map <string, struct strFilm> &mp)
 int getFilms(int argc, char *argv[])
 {
     // основная функция обработчик, находиться в main
-    struct strInputData_ inputData;
+    struct strInputData inputData;
     getPath(argc, argv, inputData);
     if (inputData.valid() != true)
     {

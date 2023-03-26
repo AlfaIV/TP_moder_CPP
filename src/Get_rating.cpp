@@ -6,7 +6,7 @@ int getRatingToFilm(vector<string> &parseString,
                     int i,
                     map <string,
                     struct strFilm> &mp,
-                    struct strInputData_ &inputData)
+                    struct strInputData &inputData)
 {
     // считывание рейтинга фильма
     // 
@@ -35,10 +35,10 @@ int getRatingToFilm(vector<string> &parseString,
     if(currentFilm != mp.end())
     {
         int numVotes,rating;
-        if(_stoi(parseString[2],&numVotes) == 0)
+        if(modStoi(parseString[2],&numVotes) == 0)
         {
             if (numVotes > 1e3 && 
-                _stoi(parseString[1],&rating ) == 0)
+                modStoi(parseString[1],&rating ) == 0)
             {
                 currentFilm->second.rating = rating;
                 // cout << currentFilm->second.rating << endl;

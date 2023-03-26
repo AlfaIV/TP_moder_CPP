@@ -5,7 +5,7 @@
 int getLocalNameOfFilm(vector<string> &parseString,
                         int i,
                         map <string, struct strFilm> &mp,
-                        struct strInputData_ &inputData)
+                        struct strInputData &inputData)
 {
     // функция поиска российского названия фильма
 
@@ -33,7 +33,7 @@ int getLocalNameOfFilm(vector<string> &parseString,
         if(parseString[3] == "RU")
         {
             // cout << parseString[2] << endl;
-            currentFilm->second.local_name = parseString[2];
+            currentFilm->second.localName = parseString[2];
         };
     };  
     return 0;

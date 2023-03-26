@@ -18,6 +18,6 @@
     int getDataWithYear(vector<string> &parseString,
                         int i,
                         map <string, struct strFilm> &mp,
-                        struct strInputData_ &inputData);
+                        struct strInputData &inputData);
 
 #endif

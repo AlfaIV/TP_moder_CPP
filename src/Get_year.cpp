@@ -8,7 +8,7 @@ bool yearsCheck(std::vector<std::string> str,
                 int year)
 {
     int isAdult, _year;
-    if (_stoi(str[4], &isAdult) == 0 && _stoi(str[5], &_year) == 0)
+    if (modStoi(str[4], &isAdult) == 0 && modStoi(str[5], &_year) == 0)
     {
         if (isAdult == 0 && _year == year){
             return true;
@@ -20,7 +20,7 @@ bool yearsCheck(std::vector<std::string> str,
 int getDataWithYear(vector<string> &parseString,
                     int i,
                     map <string, struct strFilm> &mp,
-                    struct strInputData_ &inputData)
+                    struct strInputData &inputData)
 {
     // функция получения года выпуска фильма
     
