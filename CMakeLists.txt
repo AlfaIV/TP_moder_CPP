@@ -11,16 +11,25 @@ include_directories(header)
 include_directories(src)
 
 # # compile an object library for producing a shared and dynamic library
-#add_library(Get_films
-#	    STATIC
-#	    src/Get_films.cpp
-#	    header/Get_films.h)
+add_library(CLIcommands
+	    STATIC
+	    src/CLIcommands.cpp
+	    header/CLIcommands.h)
+
+# # compile an object library for producing a shared and dynamic library
+add_library(handler
+	    STATIC
+	    src/handler.cpp
+	    header/handler.h)
+
+
 
 # generate executable
 add_executable(main
                src/main.cpp)
 
- # link to shared library 
-
-target_link_libraries(main)
+# link to shared library 
+target_link_libraries(main
+                    CLIcommands
+					handler)
 

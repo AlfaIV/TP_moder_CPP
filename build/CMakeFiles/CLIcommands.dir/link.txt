@@ -1,0 +1,2 @@
+/usr/bin/ar qc libCLIcommands.a CMakeFiles/CLIcommands.dir/src/CLIcommands.cpp.o
+/usr/bin/ranlib libCLIcommands.a
