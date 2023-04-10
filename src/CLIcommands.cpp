@@ -75,3 +75,8 @@ void WC::ProcessLine(const std::string &nameOfFile)
     std::cout << counter << std::endl;   
     in.close(); // закрываем файл
 }
+
+void WC::HandleEndOfInput()
+{
+    
+}

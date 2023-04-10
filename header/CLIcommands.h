@@ -11,7 +11,7 @@ class IOperation
 {
 public:
     void ProcessLine(const std::string &str);
-    // virtual void HandleEndOfInput() = 0;
+    virtual void HandleEndOfInput() = 0;
     // virtual void SetNextOperation(<умный/сырой указатель/ссылка на IOperation>) = 0;
 };
 
@@ -33,7 +33,7 @@ class WC : IOperation
 {
 public:
     void ProcessLine(const std::string &nameOfFile);
-    // void HandleEndOfInput();
+    void HandleEndOfInput();
 };
 
 #endif
