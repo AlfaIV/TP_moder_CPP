@@ -7,6 +7,7 @@
     #include <vector>
     #include <iostream>
     
+    #include <CLIcommands.h>
     // using namespace std;
  
     void parseInput(int argc, char *argv[]);

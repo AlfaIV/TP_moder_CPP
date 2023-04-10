@@ -29,7 +29,7 @@ public:
     void HandleEndOfInput();
 };
 
-class WC : IOperation
+class WcL : IOperation
 {
 public:
     void ProcessLine(const std::string &nameOfFile);

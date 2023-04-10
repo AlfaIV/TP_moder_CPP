@@ -50,8 +50,7 @@ void Cat::ProcessLine(const std::string &nameOfFile)
 //-----------------------------------------------------------
 // wc
 
-
-void WC::ProcessLine(const std::string &nameOfFile)
+void WcL::ProcessLine(const std::string &nameOfFile)
 {
     double counter = 0;
     std::string line;
@@ -72,11 +71,12 @@ void WC::ProcessLine(const std::string &nameOfFile)
                   << "Sorry File Is Not Open" << std::endl;
     }
 
-    std::cout << counter << std::endl;   
+    std::cout << counter << std::endl;
     in.close(); // закрываем файл
 }
 
-void WC::HandleEndOfInput()
+void WcL::HandleEndOfInput()
 {
-    
+    std::string pipline = "fdsfsad";
+    std::cout << pipline << std::endl;
 }

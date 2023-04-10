@@ -26,6 +26,8 @@ void Tests(){
 	// cat.ProcessLine("/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build/Test.txt");
 	// cat.HandleEndOfInput();
 
-	// WC wc;
+
+	// WcL wc;
 	// wc.ProcessLine("/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build/Test.txt");
+    // wc.HandleEndOfInput();
 }
