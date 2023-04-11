@@ -22,31 +22,36 @@ public:
     //выполняет команду
     virtual void HandleEndOfInput() = 0;
     //обрабатывает пайплайн
-    // virtual void SetNextOperation() = 0;
+    // virtual void SetNextOperation(WcL nextOp) = 0;
     //либо передает буффер на вывод, либо следующей команде
 };
 
-class Echo : IOperation
+class Echo : public IOperation
 {
 public:
+    Echo(std::vector<std::string> &inputPipeline);
+
     void ProcessLine(const std::string &str);
     void HandleEndOfInput();
 };
 
-class Cat : IOperation
+class Cat : public IOperation
 {
 public:
+    Cat(std::vector<std::string> &inputPipeline, std::queue<std::string> inputBuffer);
+
     void ProcessLine(const std::string &nameOfFile);
     void HandleEndOfInput();
 };
 
-class WcL : IOperation
+class WcL : public IOperation
 {
 public:
-    WcL(std::vector<std::string> &inputPipeline, std::queue<std::string> &inputBuffer);
+    WcL(std::vector<std::string> &inputPipeline, std::queue<std::string> inputBuffer);
 
     void ProcessLine(const std::string &nameOfFile);
     void HandleEndOfInput();
+    // void SetNextOperation(IOperation nextOp);
 };
 
 #endif
