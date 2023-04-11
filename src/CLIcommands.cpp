@@ -141,6 +141,18 @@ void WcL::HandleEndOfInput()
 
             std::cout << "Cat" << std::endl;
         }
+        else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "ws")
+        {
+            this->pipeline.erase(pipeline.begin(), pipeline.begin() + 3);
+            // std::cout << pipeline[0] << std::endl;
+
+            WcL wcl(this->pipeline, this->buffer);
+            IOperation &NextOp = wcl;
+            wcl.HandleEndOfInput();
+            // void SetNextOperation(echo);
+
+            std::cout << "Cat" << std::endl;
+        }
         else
         {
             while (!buffer.empty())
