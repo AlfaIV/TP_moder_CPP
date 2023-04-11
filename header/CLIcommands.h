@@ -22,7 +22,7 @@ public:
     //выполняет команду
     virtual void HandleEndOfInput() = 0;
     //обрабатывает пайплайн
-    // virtual void SetNextOperation(WcL nextOp) = 0;
+    // virtual SetNextOperation(IOperation nextOp) = 0;
     //либо передает буффер на вывод, либо следующей команде
 };
 
@@ -51,25 +51,8 @@ public:
 
     void ProcessLine(const std::string &nameOfFile);
     void HandleEndOfInput();
-    // void SetNextOperation(IOperation nextOp);
+    void SetNextOperation(IOperation &nextOp);
 };
 
 #endif
-
-// class CLIcommands
-// {
-// private:
-//     /* data */
-// public:
-//     CLIcommands(/* args */);
-//     ~CLIcommands();
-// };
-
-// CLIcommands::CLIcommands(/* args */)
-// {
-// }
-
-// CLIcommands::~CLIcommands()
-// {
-// }
 

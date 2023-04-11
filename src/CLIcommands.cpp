@@ -1,6 +1,11 @@
 // CLIcommands.cpp
 #include "CLIcommands.h"
 
+// void IOperation::SetNextOperation(IOperation &nextOp)
+// {
+//     nextOp.HandleEndOfInput();
+// }
+
 //-----------------------------------------------------------
 // echo
 Echo::Echo(std::vector<std::string> &inputPipeline)
@@ -124,8 +129,8 @@ void WcL::HandleEndOfInput()
 
             Echo echo(this->pipeline);
             IOperation &NextOp = echo;
-            echo.HandleEndOfInput();
-            // void SetNextOperation(echo);
+            // echo.HandleEndOfInput();
+            this->SetNextOperation(echo);
 
             std::cout << "Echo" << std::endl;
         }
@@ -136,8 +141,8 @@ void WcL::HandleEndOfInput()
 
             Cat cat(this->pipeline, this->buffer);
             IOperation &NextOp = cat;
-            cat.HandleEndOfInput();
-            // void SetNextOperation(echo);
+            // cat.HandleEndOfInput();
+            this->SetNextOperation(cat);
 
             std::cout << "Cat" << std::endl;
         }
@@ -148,8 +153,8 @@ void WcL::HandleEndOfInput()
 
             WcL wcl(this->pipeline, this->buffer);
             IOperation &NextOp = wcl;
-            wcl.HandleEndOfInput();
-            // void SetNextOperation(echo);
+            // wcl.HandleEndOfInput();
+            this->SetNextOperation(wcl);
 
             std::cout << "Cat" << std::endl;
         }
@@ -164,6 +169,16 @@ void WcL::HandleEndOfInput()
     }
 }
 
-// void WcL::SetNextOperation(IOperation nextOp){
-//     std::cout << "WcL" << " " << "SetNextOperation" << std::endl;
+// void WcL::HandleEndOfInput()
+// {
+//     Echo echo(this->pipeline);
+//     IOperation &NextOp = echo;
+//     // echo.HandleEndOfInput();
+//     this->SetNextOperation(echo);
+//     std::cout << "Echo" << std::endl;
 // }
+
+void WcL::SetNextOperation(IOperation &nextOp)
+{
+    nextOp.HandleEndOfInput();
+}
