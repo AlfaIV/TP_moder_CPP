@@ -37,7 +37,7 @@ void tokenize(std::string const &str,
 	}
 }
 
-void Tests()
+void Tests(int argc, char *argv[])
 {
 	// Echo echo;
 	// echo.ProcessLine("Hellow");
@@ -50,4 +50,18 @@ void Tests()
 	// WcL wc;
 	// wc.ProcessLine("/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build/Test.txt");
 	// wc.HandleEndOfInput();
+
+	std::vector<std::string> inputPipeline;
+	std::queue<std::string> inputBuffer;
+	inputPipeline = parseInput(argc, argv);
+	for (int i = 0; i < inputPipeline.size(); i += 1)
+		std::cout << inputPipeline[i] << " ";
+	std::cout << std::endl;
+	// Tests();
+
+	inputBuffer.push("sdfsd");
+	inputBuffer.push("вапва");
+	WcL wc(inputPipeline, inputBuffer);
+	// wc.ProcessLine("/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build/Test.txt");
+	wc.HandleEndOfInput();
 }

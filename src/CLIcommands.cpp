@@ -16,6 +16,8 @@ Echo::Echo(std::vector<std::string> &inputPipeline)
 void Echo::ProcessLine(const std::string &str)
 {
     std::cout << "Echo: " << str << std::endl;
+    this->buffer.push(str);
+    std::cout << this->buffer.front() << std::endl;
 }
 
 void Echo::HandleEndOfInput()
@@ -36,7 +38,7 @@ void Echo::HandleEndOfInput()
             // echo.HandleEndOfInput();
             this->SetNextOperation(echo);
 
-            std::cout << "Echo" << std::endl;
+            // std::cout << "Echo" << std::endl;
         }
         else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "cat")
         {
@@ -48,7 +50,7 @@ void Echo::HandleEndOfInput()
             // cat.HandleEndOfInput();
             this->SetNextOperation(cat);
 
-            std::cout << "Cat" << std::endl;
+            // std::cout << "Cat" << std::endl;
         }
         else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "wc")
         {
@@ -60,7 +62,7 @@ void Echo::HandleEndOfInput()
             // wcl.HandleEndOfInput();
             this->SetNextOperation(wcl);
 
-            std::cout << "wc" << std::endl;
+            // std::cout << "wc" << std::endl;
         }
         else
         {
@@ -112,7 +114,7 @@ void Cat::HandleEndOfInput()
             // echo.HandleEndOfInput();
             this->SetNextOperation(echo);
 
-            std::cout << "Echo" << std::endl;
+            // std::cout << "Echo" << std::endl;
         }
         else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "cat")
         {
@@ -124,7 +126,7 @@ void Cat::HandleEndOfInput()
             // cat.HandleEndOfInput();
             this->SetNextOperation(cat);
 
-            std::cout << "Cat" << std::endl;
+            // std::cout << "Cat" << std::endl;
         }
         else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "wc")
         {
@@ -136,7 +138,7 @@ void Cat::HandleEndOfInput()
             // wcl.HandleEndOfInput();
             this->SetNextOperation(wcl);
 
-            std::cout << "wc" << std::endl;
+            // std::cout << "wc" << std::endl;
         }
         else
         {
@@ -157,8 +159,8 @@ void Cat::ProcessLine(const std::string &nameOfFile)
     std::ifstream in(nameOfFile); // окрываем файл для чтения
     if (in.is_open())
     {
-        std::cout << "Cat: "
-                  << "File Is Open" << std::endl;
+        // std::cout << "Cat: "
+        //           << "File Is Open" << std::endl;
         while (getline(in, line))
         {
             // std::cout << line << std::endl;
@@ -168,8 +170,8 @@ void Cat::ProcessLine(const std::string &nameOfFile)
     }
     else
     {
-        std::cout << "Cat: "
-                  << "Sorry File Is Not Open" << std::endl;
+        // std::cout << "Cat: "
+        //           << "Sorry File Is Not Open" << std::endl;
     }
     in.close(); // закрываем файл
 }
@@ -243,7 +245,7 @@ void WcL::HandleEndOfInput()
             // echo.HandleEndOfInput();
             this->SetNextOperation(echo);
 
-            std::cout << "Echo" << std::endl;
+            // std::cout << "Echo" << std::endl;
         }
         else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "cat")
         {
@@ -255,7 +257,7 @@ void WcL::HandleEndOfInput()
             // cat.HandleEndOfInput();
             this->SetNextOperation(cat);
 
-            std::cout << "Cat" << std::endl;
+            // std::cout << "Cat" << std::endl;
         }
         else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "wc")
         {
@@ -267,7 +269,7 @@ void WcL::HandleEndOfInput()
             // wcl.HandleEndOfInput();
             this->SetNextOperation(wcl);
 
-            std::cout << "wc" << std::endl;
+            // std::cout << "wc" << std::endl;
         }
         else
         {

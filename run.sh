@@ -12,3 +12,5 @@ echo "========Test 2=========="
 ./tmp/main 'wc Test.txt | cat Test.txt'
 echo "========Test 3=========="
 ./tmp/main 'wc Test.txt | wc Test.txt'
+echo "========Test 4=========="
+./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
