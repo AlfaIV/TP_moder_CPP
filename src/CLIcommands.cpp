@@ -1,6 +1,11 @@
 // CLIcommands.cpp
 #include "CLIcommands.h"
 
+void IOperation(std::vector<std::string> inputPipeline, std::queue<std::string> buffer)
+{
+    std::cout << inputPipeline[0] << std::endl;
+}
+
 //-----------------------------------------------------------
 // echo
 
@@ -50,6 +55,17 @@ void Cat::ProcessLine(const std::string &nameOfFile)
 //-----------------------------------------------------------
 // wc
 
+WcL::WcL(std::vector<std::string> &inputPipeline, std::queue<std::string> &inputBuffer)
+{
+    this->pipeline = inputPipeline;
+    // std::cout << inputPipeline[0] << std::endl;
+    while(!inputBuffer.empty()){
+        this->buffer.push(inputBuffer.front());
+        inputBuffer.pop();
+    }
+    std::cout << this->buffer.size() << std::endl;
+}
+
 void WcL::ProcessLine(const std::string &nameOfFile)
 {
     double counter = 0;
@@ -72,11 +88,14 @@ void WcL::ProcessLine(const std::string &nameOfFile)
     }
 
     std::cout << counter << std::endl;
+    this->buffer.push(std::to_string(counter));
     in.close(); // закрываем файл
 }
 
 void WcL::HandleEndOfInput()
 {
-    std::string pipline = "fdsfsad";
-    std::cout << pipline << std::endl;
+    if(this->pipeline.size() == 2){
+        std::cout << this->pipeline[1] << std::endl;
+        this->ProcessLine(this->pipeline[1]);
+    }
 }
