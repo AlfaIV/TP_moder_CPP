@@ -9,6 +9,6 @@ cmake --build tmp
 echo "========Test 1=========="
 ./tmp/main 'wc Test.txt | echo 1'
 echo "========Test 2=========="
-./tmp/main 'wc Test.txt | cat 1'
+./tmp/main 'wc Test.txt | cat Test.txt'
 echo "========Test 3=========="
-./tmp/main 'wc Test.txt | ws Test.txt'
+./tmp/main 'wc Test.txt | wc Test.txt'

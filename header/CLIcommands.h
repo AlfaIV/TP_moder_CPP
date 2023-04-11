@@ -33,6 +33,7 @@ public:
 
     void ProcessLine(const std::string &str);
     void HandleEndOfInput();
+    void SetNextOperation(IOperation &nextOp);
 };
 
 class Cat : public IOperation
@@ -42,6 +43,7 @@ public:
 
     void ProcessLine(const std::string &nameOfFile);
     void HandleEndOfInput();
+    void SetNextOperation(IOperation &nextOp);
 };
 
 class WcL : public IOperation
