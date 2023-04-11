@@ -127,20 +127,20 @@ void WcL::HandleEndOfInput()
             echo.HandleEndOfInput();
             // void SetNextOperation(echo);
 
-            // std::cout << "Echo" << std::endl;
+            std::cout << "Echo" << std::endl;
         }
-        // if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "cat")
-        // {
-        //     this->pipeline.erase(pipeline.begin(), pipeline.begin() + 3);
-        //     // std::cout << pipeline[0] << std::endl;
+        else if (this->pipeline.size() >= 4 && this->pipeline[2] == "|" && this->pipeline[3] == "cat")
+        {
+            this->pipeline.erase(pipeline.begin(), pipeline.begin() + 3);
+            // std::cout << pipeline[0] << std::endl;
 
-        //     Cat cat(this->pipeline,this->buffer);
-        //     IOperation &NextOp = cat;
-        //     cat.HandleEndOfInput();
-        //     // void SetNextOperation(echo);
+            Cat cat(this->pipeline, this->buffer);
+            IOperation &NextOp = cat;
+            cat.HandleEndOfInput();
+            // void SetNextOperation(echo);
 
-        //     std::cout << "Echo" << std::endl;
-        // }
+            std::cout << "Cat" << std::endl;
+        }
         else
         {
             while (!buffer.empty())
