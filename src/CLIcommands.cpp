@@ -1,11 +1,6 @@
 // CLIcommands.cpp
 #include "CLIcommands.h"
 
-// void IOperation::SetNextOperation(IOperation &nextOp)
-// {
-//     nextOp.HandleEndOfInput();
-// }
-
 //-----------------------------------------------------------
 // echo
 Echo::Echo(std::vector<std::string> &inputPipeline)
@@ -15,14 +10,14 @@ Echo::Echo(std::vector<std::string> &inputPipeline)
 
 void Echo::ProcessLine(const std::string &str)
 {
-    std::cout << "Echo: " << str << std::endl;
+    // std::cout << "Echo: " << str << std::endl;
     this->buffer.push(str);
     std::cout << this->buffer.front() << std::endl;
 }
 
 void Echo::HandleEndOfInput()
 {
-     if (this->pipeline.size() >= 2 && this->pipeline[0] == "echo")
+    if (this->pipeline.size() >= 2 && this->pipeline[0] == "echo")
     {
         // std::cout << this->pipeline[3] << std::endl;
         this->ProcessLine(this->pipeline[1]);
@@ -79,7 +74,6 @@ void Echo::SetNextOperation(IOperation &nextOp)
 {
     nextOp.HandleEndOfInput();
 }
-
 
 //-----------------------------------------------------------
 // cat
@@ -165,7 +159,6 @@ void Cat::ProcessLine(const std::string &nameOfFile)
         {
             // std::cout << line << std::endl;
             this->buffer.push(line);
-
         }
     }
     else
@@ -281,15 +274,6 @@ void WcL::HandleEndOfInput()
         }
     }
 }
-
-// void WcL::HandleEndOfInput()
-// {
-//     Echo echo(this->pipeline);
-//     IOperation &NextOp = echo;
-//     // echo.HandleEndOfInput();
-//     this->SetNextOperation(echo);
-//     std::cout << "Echo" << std::endl;
-// }
 
 void WcL::SetNextOperation(IOperation &nextOp)
 {

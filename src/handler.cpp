@@ -1,9 +1,10 @@
 // handler.cpp
 #include "handler.h"
+#include "CLIcommands.cpp"
 
 std::vector<std::string> parseInput(int argc, char *argv[])
 {
-	std::string current_exec_name = argv[0]; // Name of the current exec program
+	std::string current_exec_name = argv[0];
 	std::vector<std::string> allArgs;
 
 	if (argc > 1)
@@ -37,31 +38,40 @@ void tokenize(std::string const &str,
 	}
 }
 
-void Tests(int argc, char *argv[])
+void processPipline(std::vector<std::string> inputPipeline)
 {
-	// Echo echo;
-	// echo.ProcessLine("Hellow");
-	// echo.HandleEndOfInput();
+	if (!inputPipeline.empty())
+	{
+		std::queue<std::string> inputBuffer;
+		if (inputPipeline[0] == "echo")
+		{
+			Echo echo(inputPipeline);
+			echo.HandleEndOfInput();
+			// std::cout << "Echo" << std::endl;
+		}
+		else if (inputPipeline[0] == "cat")
+		{
+			Cat cat(inputPipeline, inputBuffer);
+			cat.HandleEndOfInput();
+			// std::cout << "Cat" << std::endl;
+		}
+		else if (inputPipeline[0] == "wc")
+		{
+			WcL wcl(inputPipeline, inputBuffer);
+			wcl.HandleEndOfInput();
 
-	// Cat cat;
-	// cat.ProcessLine("/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build/Test.txt");
-	// cat.HandleEndOfInput();
+			// std::cout << "wc" << std::endl;
+		}
+	}
+}
 
-	// WcL wc;
-	// wc.ProcessLine("/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build/Test.txt");
-	// wc.HandleEndOfInput();
-
+void handler(int argc, char *argv[])
+{
 	std::vector<std::string> inputPipeline;
 	std::queue<std::string> inputBuffer;
 	inputPipeline = parseInput(argc, argv);
 	for (int i = 0; i < inputPipeline.size(); i += 1)
 		std::cout << inputPipeline[i] << " ";
 	std::cout << std::endl;
-	// Tests();
-
-	inputBuffer.push("sdfsd");
-	inputBuffer.push("вапва");
-	WcL wc(inputPipeline, inputBuffer);
-	// wc.ProcessLine("/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build/Test.txt");
-	wc.HandleEndOfInput();
+	processPipline(inputPipeline);
 }
