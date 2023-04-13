@@ -16,6 +16,10 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "HW2"
+
 default:
   tags:
     - C++
@@ -57,7 +61,7 @@ valgrind-test-job:   # This job also runs in the test stage.
     - echo "Install cppcheck"
     - apt-get -qq update && apt-get -qq install -y valgrind
     - echo "Installation complite"
-    - valgrind --leak-check=full ./tmp/main 'echo 1 | cat ../Tests/Test.txt | cat ../Tests/Test.txt | wc ../Tests/Test.txt'
+    - valgrind --leak-check=full ./tmp/main 'echo 1 | cat Tests/Test.txt | cat Tests/Test.txt | wc Tests/Test.txt'
     - echo "Complite valgrind test"
   # allow_failure: true
 
