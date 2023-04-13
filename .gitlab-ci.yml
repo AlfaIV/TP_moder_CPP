@@ -28,21 +28,31 @@ stages:          # List of stages for jobs, and their order of execution
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
+    - echo "Install gcc; cmake; clang"
     - apt-get -qq update && apt-get -qq install -y gcc
     - apt-get -qq update && apt-get -qq install -y cmake
-    - echo "Compiling the code..."
+    - apt-get -qq update && apt-get -qq install -y clang
+    - echo "Install complite"
+    - echo "Compiling the code"
+    - mkdir tmp
+    - cmake -S . -B tmp
+    - cmake --build tmp
+    - echo "Compiling the code"
     - echo "Compile complete."
+  artifacts:
+    paths:
+      - ./tmp/main
 
-unit-test-job:   # This job runs in the test stage.
-  stage: test    # It only starts when the job in the build stage completes successfully.
-  script:
-    - echo "Running unit tests... This will take about 60 seconds."
-    - sleep 60
-    - echo "Code coverage is 90%"
+# unit-test-job:   # This job runs in the test stage.
+#   stage: test    # It only starts when the job in the build stage completes successfully.
+#   script:
+#     - echo "Running unit tests... This will take about 60 seconds."
+#     - sleep 60
+#     - echo "Code coverage is 90%"
 
-lint-test-job:   # This job also runs in the test stage.
-  stage: test    # It can run at the same time as unit-test-job (in parallel).
-  script:
-    - echo "Linting code... This will take about 10 seconds."
-    - sleep 10
-    - echo "No lint issues found."
+# lint-test-job:   # This job also runs in the test stage.
+#   stage: test    # It can run at the same time as unit-test-job (in parallel).
+#   script:
+#     - echo "Linting code... This will take about 10 seconds."
+#     - sleep 10
+#     - echo "No lint issues found."
