@@ -59,4 +59,4 @@ lint-test-job:   # This job also runs in the test stage.
     - echo "Installation complite"
     - cppcheck src/* header/*
     - echo "No lint issues found."
-  allow_failure: true.
+  allow_failure: true
