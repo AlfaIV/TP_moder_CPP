@@ -49,7 +49,7 @@ valgrind-test-job:   # This job also runs in the test stage.
     - apt-get -qq update && apt-get -qq install -y valgrind
     - echo "Installation complite"
     # - valgrind --leak-check=full ./tmp/main 'echo 1 | cat Tests/Test.txt | cat Tests/Test.txt | wc Tests/Test.txt'
-    valgrind --xml=yes --xml-file="valgrind_log.xml" --leak-check=full ./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
+    - valgrind --xml=yes --xml-file="valgrind_log.xml" --leak-check=full ./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
     - echo "Complite valgrind test"
   artifacts:
     reports:
