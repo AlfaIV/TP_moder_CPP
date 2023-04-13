@@ -1,9 +1,13 @@
 image: gcc
 
-build:
+stage:
+  -build
+
+build-job:
   stage: build
   script:
-    - ./run.sh
+    - echo "build"
+    - echo "build_file" > tmp/out
   artifacts:
     paths:
-      - tmp/main
+      - tmp/out
