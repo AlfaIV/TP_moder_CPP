@@ -15,4 +15,6 @@ echo "========Test 3=========="
 echo "========Test 4=========="
 ./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
 
-# cppcheck src/* header/*
+
+cppcheck src/* header/* --enable=all
+valgrind --leak-check=full ./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
