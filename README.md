@@ -63,7 +63,18 @@ void SetNextOperation(<умный/сырой указатель/ссылка н�
 
 ---
 
-### Полезные ссылки
+### Запуск программы
+
+Там есть небольшие тестовые примеры
+
+```python
+chmod +x run.sh
+./run.sh 
+```
+
+---
+
+### Полезные ссылки (для себя)
 - https://www.youtube.com/watch?v=-CyVpfDQAG0
 - https://yandex.ru/images/search?img_url=http%3A%2F%2Fcollectiveray.com%2Fimages%2F2021%2F05%2Fmarkdown-cheat-sheet-basic-elements.jpeg&lr=29393&pos=7&rpt=simage&source=serp&text=markdown%20%D1%88%D0%BF%D0%B0%D1%80%D0%B3%D0%B0%D0%BB%D0%BA%D0%B0
 - https://yandex.ru/images/search?img_url=http%3A%2F%2Fcollectiveray.com%2Fimages%2F2021%2F05%2Fmarkdown-cheat-sheet-basic-elements.jpeg&lr=29393&pos=7&rpt=simage&source=serp&text=markdown%20%D1%88%D0%BF%D0%B0%D1%80%D0%B3%D0%B0%D0%BB%D0%BA%D0%B0
