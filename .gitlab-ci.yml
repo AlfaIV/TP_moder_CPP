@@ -3,7 +3,7 @@ workflow:
     - if: $CI_COMMIT_BRANCH == "HW2"
     # только для определенной ветки HW2
 variables:
-  TEST_FILE_PATH: "Tests/Test.txt"
+  TEST_FILE_PATH: 'Tests/Test.txt'
 
 default:
   tags:
@@ -50,7 +50,7 @@ valgrind-test-job:   # This job also runs in the test stage.
     - echo "Install cppcheck"
     - apt-get -qq update && apt-get -qq install -y valgrind
     - echo "Installation complite"
-    - valgrind --leak-check=full ./tmp/main 'echo 1 | cat $TEST_FILE_PATH | cat $TEST_FILE_PATH | wc $TEST_FILE_PATH'
+    - valgrind --leak-check=full ./tmp/main 'echo 1 | cat ${TEST_FILE_PATH} | cat ${TEST_FILE_PATH} | wc ${TEST_FILE_PATH}'
     - echo "Complite valgrind test"
 
 cppcheck-test-job:   # This job also runs in the test stage.
