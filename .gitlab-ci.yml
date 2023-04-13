@@ -52,10 +52,6 @@ valgrind-test-job:   # This job also runs in the test stage.
     - echo "Installation complite"
     - valgrind --leak-check=full ./tmp/main 'echo 1 | cat Tests/Test.txt | cat Tests/Test.txt | wc Tests/Test.txt'
     - echo "Complite valgrind test"
-  artifacts:
-    reports:
-      junit: valgrind_log.xml
-  # allow_failure: true
 
 cppcheck-test-job:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).

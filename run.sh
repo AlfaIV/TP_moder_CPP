@@ -13,8 +13,9 @@ echo "========Test 2=========="
 echo "========Test 3=========="
 ./tmp/main 'wc Test.txt | wc Test.txt'
 echo "========Test 4=========="
-./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
+./tmp/main 'echo 1 | cat Tests/Test.txt | cat Tests/Test.txt | wc Tests/Test.txt'
 
 
-cppcheck src/* header/* --enable=all
-valgrind --leak-check=full ./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
+# cppcheck src/* header/* --enable=all
+# valgrind --leak-check=full ./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
+# - valgrind --xml=yes --xml-file="valgrind_log.xml" --leak-check=full ./tmp/main 'echo 1 | cat Test.txt | cat Test.txt | wc Test.txt'
