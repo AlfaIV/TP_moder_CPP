@@ -1,4 +1,6 @@
 tmp/*
 .vscode/*
 bulid/*
+bulid
 Some.cpp
+ci/*
