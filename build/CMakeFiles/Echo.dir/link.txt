@@ -1,0 +1,2 @@
+/usr/bin/ar qc libEcho.a CMakeFiles/Echo.dir/src/Echo.cpp.o
+/usr/bin/ranlib libEcho.a

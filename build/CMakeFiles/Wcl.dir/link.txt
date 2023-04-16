@@ -1,0 +1,2 @@
+/usr/bin/ar qc libWcl.a CMakeFiles/Wcl.dir/src/Wcl.cpp.o
+/usr/bin/ranlib libWcl.a

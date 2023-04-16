@@ -8,6 +8,11 @@
 #include <iostream>
 #include <sstream>
 
+#include <Cat.h>
+#include <Echo.h>
+#include <Wcl.h>
+// #include <CLIcommands.c>
+
 // using namespace std;
 
 std::vector<std::string> parseInput(int argc, char *argv[]);

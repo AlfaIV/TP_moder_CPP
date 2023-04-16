@@ -7,7 +7,7 @@ cmake --build tmp
 # ./tmp/main
 # ./tmp/main 'echo 1 | cat file_1.txt | cat file_2.txt'
 # ./tmp/main 'wc Test.txt'
-cp Tests/Test.txt tmp/
+# cp Tests/Test.txt tmp/
 echo "========Test 1=========="
 ./tmp/main 'wc Test.txt | echo 1'
 echo "========Test 2=========="

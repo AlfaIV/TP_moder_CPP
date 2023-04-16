@@ -1,6 +1,8 @@
 // handler.cpp
 #include "handler.h"
-#include "CLIcommands.cpp"
+// #include "CLIcommands.cpp"
+// #include "Echo.cpp"
+// #include "Cat.cpp"
 
 std::vector<std::string> parseInput(int argc, char *argv[])
 {

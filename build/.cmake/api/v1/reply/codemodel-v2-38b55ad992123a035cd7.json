@@ -1,0 +1,105 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CLI_command",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CLIcommands::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CLIcommands-Debug-3cc064fb37c25cfcd8b1.json",
+					"name" : "CLIcommands",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Cat::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Cat-Debug-50ce7c00fa56e6a058a0.json",
+					"name" : "Cat",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Echo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Echo-Debug-f779871b8533d06756e9.json",
+					"name" : "Echo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Wcl::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Wcl-Debug-75952ca8fb6825102700.json",
+					"name" : "Wcl",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "handler::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-handler-Debug-e1b7a0ca3165b79447fc.json",
+					"name" : "handler",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-bbaad55cd966ccd5b083.json",
+					"name" : "main",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/alfaiv/Code/TP_VK/modern_cpp/HM1/build",
+		"source" : "/home/alfaiv/Code/TP_VK/modern_cpp/HM1"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

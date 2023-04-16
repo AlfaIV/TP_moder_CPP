@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g -rdynamic CMakeFiles/main.dir/src/main.cpp.o -o main  libCLIcommands.a libEcho.a libCat.a libWcl.a libhandler.a 

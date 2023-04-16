@@ -14,7 +14,30 @@ include_directories(src)
 add_library(CLIcommands
 	    STATIC
 	    src/CLIcommands.cpp
-	    header/CLIcommands.h)
+	    header/CLIcommands.h
+		)
+
+# # compile an object library for producing a shared and dynamic library
+add_library(Echo
+	STATIC
+	src/Echo.cpp
+	header/Echo.h
+	)
+
+# # compile an object library for producing a shared and dynamic library
+add_library(Cat
+	STATIC
+	src/Cat.cpp
+	header/Cat.h
+	)
+
+# # compile an object library for producing a shared and dynamic library
+add_library(Wcl
+	STATIC
+	src/Wcl.cpp
+	header/Wcl.h
+	)
+
 
 # # compile an object library for producing a shared and dynamic library
 add_library(handler
@@ -31,5 +54,9 @@ add_executable(main
 # link to shared library 
 target_link_libraries(main
                     CLIcommands
-					handler)
+					Echo
+					Cat
+					Wcl
+					handler
+					)
 

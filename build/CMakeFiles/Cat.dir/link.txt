@@ -1,0 +1,2 @@
+/usr/bin/ar qc libCat.a CMakeFiles/Cat.dir/src/Cat.cpp.o
+/usr/bin/ranlib libCat.a
